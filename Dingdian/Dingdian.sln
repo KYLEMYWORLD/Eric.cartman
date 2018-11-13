@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dingdian", "Dingdian\Dingdian.csproj", "{7158921B-21C3-4FD4-9016-A2488D2BA156}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EA5EDC40-0D38-4FE0-85DF-F3B7069D977D} = {EA5EDC40-0D38-4FE0-85DF-F3B7069D977D}
+		{391FE06C-2B2A-464E-ACA6-35109D57D96E} = {391FE06C-2B2A-464E-ACA6-35109D57D96E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteHelpler", "SQLiteHelpler\SQLiteHelpler.csproj", "{EA5EDC40-0D38-4FE0-85DF-F3B7069D977D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogHelper", "LogHelper\LogHelper.csproj", "{391FE06C-2B2A-464E-ACA6-35109D57D96E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7158921B-21C3-4FD4-9016-A2488D2BA156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7158921B-21C3-4FD4-9016-A2488D2BA156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7158921B-21C3-4FD4-9016-A2488D2BA156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7158921B-21C3-4FD4-9016-A2488D2BA156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5EDC40-0D38-4FE0-85DF-F3B7069D977D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5EDC40-0D38-4FE0-85DF-F3B7069D977D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5EDC40-0D38-4FE0-85DF-F3B7069D977D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5EDC40-0D38-4FE0-85DF-F3B7069D977D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391FE06C-2B2A-464E-ACA6-35109D57D96E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391FE06C-2B2A-464E-ACA6-35109D57D96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391FE06C-2B2A-464E-ACA6-35109D57D96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391FE06C-2B2A-464E-ACA6-35109D57D96E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {726C0CE8-ABAC-418D-8F2D-1727CB8F7362}
+	EndGlobalSection
+EndGlobal
