@@ -36,7 +36,7 @@ namespace KDTask
 
             if (devs == null)
             {
-                devListView.Clear();
+                devListView.Items.Clear();
                 return;
             }
 
@@ -58,6 +58,7 @@ namespace KDTask
                 Devdef devdef = XMLMaster.Devdefs.FindDevdef(devListView.FocusedItem.Text);
                 if (devdef != null)
                 {
+                    devIdTB.Enabled = false;
                     devIdTB.Text = devdef.ID;
                     devNameTB.Text = devdef.Name;
                     devNetCB.SelectedIndex = int.Parse(devdef.ConnetType);
@@ -74,6 +75,7 @@ namespace KDTask
         private void AddDevBtn_Click(object sender, EventArgs e)
         {
             devDefAddEditBtn.Text = "添加";
+            devIdTB.Enabled = true;
             devIdTB.Text = "";
             devNameTB.Text = "";
             devNetCB.SelectedIndex = 0;

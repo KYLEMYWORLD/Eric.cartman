@@ -9,7 +9,7 @@ namespace XMLHelper
 {
     public class XmlHelper
     {
-        private XmlDocument _xmldoc;
+        public XmlDocument _xmldoc;
 
         public XmlHelper()
         {
@@ -72,9 +72,9 @@ namespace XMLHelper
             return _xmldoc.CreateElement(name);
         }
 
-        public void AddToNode(XmlElement xml)
+        public void AddToNode(string xpath, XmlElement xml)
         {
-            _xmldoc.SelectSingleNode("conf").AppendChild(xml);
+            _xmldoc.SelectSingleNode(xpath).AppendChild(xml);
 
         }
 

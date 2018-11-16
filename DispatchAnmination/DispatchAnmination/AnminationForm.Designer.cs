@@ -33,15 +33,22 @@
             this.anminationPicBox = new System.Windows.Forms.PictureBox();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.anminateTimer = new System.Windows.Forms.Timer(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.LinePosNegBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.anminationPicBox)).BeginInit();
+            this.toolStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // anminationPicBox
             // 
             this.anminationPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.anminationPicBox.Location = new System.Drawing.Point(0, 0);
+            this.anminationPicBox.Location = new System.Drawing.Point(0, 25);
             this.anminationPicBox.Name = "anminationPicBox";
-            this.anminationPicBox.Size = new System.Drawing.Size(984, 761);
+            this.anminationPicBox.Size = new System.Drawing.Size(984, 736);
+            this.anminationPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.anminationPicBox.TabIndex = 0;
             this.anminationPicBox.TabStop = false;
             this.anminationPicBox.Paint += new System.Windows.Forms.PaintEventHandler(this.anmination_picBox_Paint);
@@ -61,18 +68,60 @@
             this.anminateTimer.Interval = 50;
             this.anminateTimer.Tick += new System.EventHandler(this.anminateTimer_Tick);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(984, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LinePosNegBtn});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(85, 22);
+            this.toolStripDropDownButton1.Text = "线路配置";
+            // 
+            // LinePosNegBtn
+            // 
+            this.LinePosNegBtn.Name = "LinePosNegBtn";
+            this.LinePosNegBtn.Size = new System.Drawing.Size(180, 22);
+            this.LinePosNegBtn.Text = "运动尺寸";
+            this.LinePosNegBtn.Click += new System.EventHandler(this.LinePosNegBtn_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.anminationPicBox);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 25, 0, 0);
+            this.panel1.Size = new System.Drawing.Size(984, 761);
+            this.panel1.TabIndex = 2;
+            // 
             // AnminationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 761);
-            this.Controls.Add(this.anminationPicBox);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnminationForm";
             this.Text = "DispatchAnmination";
             this.Load += new System.EventHandler(this.AnminationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.anminationPicBox)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -81,6 +130,10 @@
         private System.Windows.Forms.PictureBox anminationPicBox;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Timer anminateTimer;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem LinePosNegBtn;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

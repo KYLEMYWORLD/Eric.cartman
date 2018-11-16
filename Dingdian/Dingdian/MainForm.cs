@@ -9,8 +9,8 @@ namespace Dingdian
 {
     public partial class mainForm : Form
     {
-        private SQLiteHelpler.DianBA dianBA;
-        private Boolean dbReady;
+        //private SQLiteHelpler.DianBA dianBA;
+        //private Boolean dbReady;
         
         
 
@@ -18,9 +18,9 @@ namespace Dingdian
         {
             InitializeComponent();
             
-            SQLiteHelpler.SQLiteUtils.initSQLiteDB();
-            dianBA = new SQLiteHelpler.DianBA();
-            LogFactory.Init();
+            //SQLiteHelpler.SQLiteUtils.initSQLiteDB();
+            //dianBA = new SQLiteHelpler.DianBA();
+            //LogFactory.Init();
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -88,11 +88,11 @@ namespace Dingdian
                 {
                     beautyText(someNode.InnerHtml);
                 }
-                FileUtils.SaveFileToText(url);
-                dianBA.insert(GetDianData(titleName, nextPage, richTextBox1.Text));
-                LogFactory.LogError("查找车辆错误", "找不到符合条件的AGV小车");
-                LogFactory.LogDispatch("调度ID", "窑尾调度", "调度信息");
-                LogFactory.LogFinish("调度完成ID", "窑头调度", "调度信息");
+                //FileUtils.SaveFileToText(url);
+                //dianBA.insert(GetDianData(titleName, nextPage, richTextBox1.Text));
+                //LogFactory.LogError("查找车辆错误", "找不到符合条件的AGV小车");
+                //LogFactory.LogDispatch("调度ID", "窑尾调度", "调度信息");
+                //LogFactory.LogFinish("调度完成ID", "窑头调度", "调度信息");
 
                /// LogFactory.LogAdd(LOGTYPE.DISPATCH,"","","");
 

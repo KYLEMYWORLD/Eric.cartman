@@ -71,23 +71,37 @@ namespace KDTask
         {
             return _xmldoc.CreateElement(name);
         }
-        /// <summary>
-        /// 添加到设备
-        /// </summary>
-        /// <param name="xml"></param>
-        public void AddToDevs(XmlElement xml)
+
+        public XmlElement GetSingleNode(string xpath)
         {
-            _xmldoc.SelectSingleNode("Config/Devs").AppendChild(xml);
-        }
-        /// <summary>
-        /// 添加到设备定义
-        /// </summary>
-        /// <param name="xml"></param>
-        public void AddToDevdefs(XmlElement xml)
-        {
-            _xmldoc.SelectSingleNode("Config/DevDefs").AppendChild(xml);
+            try
+            {
+                return (XmlElement)_xmldoc.SelectSingleNode(xpath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return null;
         }
 
+        /// <summary>
+        /// 添加元素到对应节点
+        /// </summary>
+        /// <param name="xpath"></param>
+        /// <param name="xml"></param>
+        public void AddToNode(string xpath,XmlElement xml)
+        {
+            try
+            {
+                _xmldoc.SelectSingleNode(xpath).AppendChild(xml);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+           
+        }
 
         /// <summary>
         /// 测试专用

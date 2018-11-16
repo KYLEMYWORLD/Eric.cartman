@@ -88,12 +88,14 @@
             this.toolDevstatusItem.Name = "toolDevstatusItem";
             this.toolDevstatusItem.Size = new System.Drawing.Size(180, 22);
             this.toolDevstatusItem.Text = "设备属性";
+            this.toolDevstatusItem.Click += new System.EventHandler(this.toolDevstatusItem_Click);
             // 
             // toolCodedefItem
             // 
             this.toolCodedefItem.Name = "toolCodedefItem";
             this.toolCodedefItem.Size = new System.Drawing.Size(180, 22);
             this.toolCodedefItem.Text = "指令定义";
+            this.toolCodedefItem.Click += new System.EventHandler(this.toolCodedefItem_Click);
             // 
             // toolCodeanyItem
             // 
@@ -120,13 +122,13 @@
             // toolTaskdefItem
             // 
             this.toolTaskdefItem.Name = "toolTaskdefItem";
-            this.toolTaskdefItem.Size = new System.Drawing.Size(124, 22);
+            this.toolTaskdefItem.Size = new System.Drawing.Size(180, 22);
             this.toolTaskdefItem.Text = "任务定义";
             // 
             // toolTasklogicItem
             // 
             this.toolTasklogicItem.Name = "toolTasklogicItem";
-            this.toolTasklogicItem.Size = new System.Drawing.Size(124, 22);
+            this.toolTasklogicItem.Size = new System.Drawing.Size(180, 22);
             this.toolTasklogicItem.Text = "任务逻辑";
             // 
             // KDForm

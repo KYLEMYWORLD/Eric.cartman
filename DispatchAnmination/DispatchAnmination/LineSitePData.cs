@@ -24,7 +24,7 @@ namespace DispatchAnmination
         /// <param name="lineid"></param>
         /// <param name="rate"></param>
         /// <returns></returns>
-        public static MPoint GetMPointOnLine(int lineid,int rate)
+        public static MPoint GetMPointOnLine(int lineid,float rate)
         {
             foreach(Line line in _linesPositive)
             {
@@ -153,7 +153,7 @@ namespace DispatchAnmination
         /// 根据百分比获取当前所在地方地标
         /// </summary>
         /// <param name="rate"></param>
-        public MPoint GetPositionPOnRate(int rate)
+        public MPoint GetPositionPOnRate(float rate)
         {
             int rateleng = (int)(rate / (float)100 * (float)Lenght);
             foreach (MPoint p in _points)
@@ -181,7 +181,7 @@ namespace DispatchAnmination
         }
 
         /// <summary>
-        /// 
+        /// 根据百分比获取两个点直接的百分比的坐标值
         /// </summary>
         /// <param name="rate"></param>
         /// <param name="p1"></param>

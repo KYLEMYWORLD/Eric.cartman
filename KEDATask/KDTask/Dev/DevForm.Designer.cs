@@ -59,7 +59,7 @@
             this.devListView.Size = new System.Drawing.Size(243, 464);
             this.devListView.TabIndex = 0;
             this.devListView.UseCompatibleStateImageBehavior = false;
-            this.devListView.View = System.Windows.Forms.View.List;
+            this.devListView.View = System.Windows.Forms.View.Details;
             this.devListView.SelectedIndexChanged += new System.EventHandler(this.DevListView_SelectedIndexChanged);
             // 
             // label1
@@ -94,6 +94,7 @@
             // 
             // devIdTB
             // 
+            this.devIdTB.Enabled = false;
             this.devIdTB.Location = new System.Drawing.Point(407, 97);
             this.devIdTB.Name = "devIdTB";
             this.devIdTB.Size = new System.Drawing.Size(121, 21);

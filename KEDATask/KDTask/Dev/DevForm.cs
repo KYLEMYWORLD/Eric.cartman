@@ -19,7 +19,7 @@ namespace KDTask
             devListView.Columns.Add("设备ID",   80, HorizontalAlignment.Left);
             devListView.Columns.Add("设备名称", 80, HorizontalAlignment.Left);
             devListView.Columns.Add("设备类型", 78, HorizontalAlignment.Left);
-            devListView.View = System.Windows.Forms.View.Details;
+
             ListViewRefresh();
             devtypeCB.Items.AddRange(XMLMaster.Devdefs.GetTypeStrings());
             devDefCB.Items.Add("ALL");
@@ -43,7 +43,7 @@ namespace KDTask
 
             if (devs == null)
             {
-                devListView.Clear();
+                devListView.Items.Clear();
                 return;
             }
 
@@ -77,6 +77,7 @@ namespace KDTask
                 Dev dev= XMLMaster.Devs.FindDev(devListView.FocusedItem.Text);
                 if (dev != null)
                 {
+                    devIdTB.Enabled = false;
                     devIdTB.Text = dev.ID;
                     devNameTB.Text = dev.Name;
                     devIPTB.Text = dev.IP;
@@ -95,6 +96,7 @@ namespace KDTask
         private void AddDevBtn_Click(object sender, EventArgs e)
         {
             devAddEditBtn.Text = "添加";
+            devIdTB.Enabled = true;
             devIdTB.Text = "";
             devNameTB.Text = "";
             devPortTB.Text = "";

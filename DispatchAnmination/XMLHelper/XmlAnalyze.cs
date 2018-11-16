@@ -17,15 +17,11 @@ namespace XMLHelper
         private XmlHelper _xmlHepler;
 
         /// <summary>
-        /// 线路XML
-        /// </summary>
-        private XmlNodeList _lineXml;
-
-        /// <summary>
         /// 线路转换后的信息
         /// </summary>
         public List<LineData> _lineDatas { get; set; }
 
+        
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -42,20 +38,30 @@ namespace XMLHelper
         public void DoAnalyze()
         {
             _xmlHepler.CreateOrLoadXMLFile();
-            _lineXml = _xmlHepler.GetXmlNodeList("Line");
-            if(_lineXml != null)
-            {
-                AnalyzeLines();
-            }
+            AnalyzeLineMoveSize(_xmlHepler.GetXmlNodeList("Size"));
+            AnalyzeLines(_xmlHepler.GetXmlNodeList("Line"));
 
+
+        }
+        public void AnalyzeLineMoveSize(XmlNodeList nodeList)
+        {
+            if (nodeList == null) return;
+            LineMoveSize._lineMoveSize.Clear();
+            foreach (XmlElement size in nodeList)
+            {
+                int id = int.Parse(size.GetAttribute("id"));
+                float value = float.Parse(size.GetAttribute("value"));
+                LineMoveSize._lineMoveSize.Add(new LineMoveSize(id, value));
+            }
         }
 
         /// <summary>
         /// 解析线路信息XML
         /// </summary>
-        public void AnalyzeLines()
+        public void AnalyzeLines(XmlNodeList lineXml)
         {
-            foreach(XmlElement e in _lineXml)
+            if (lineXml == null) return;
+            foreach(XmlElement e in lineXml)
             {
                 int startx = int.Parse(e.GetAttribute("startx"));
                 int starty = int.Parse(e.GetAttribute("starty"));

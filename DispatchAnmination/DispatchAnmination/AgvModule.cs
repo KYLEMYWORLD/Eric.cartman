@@ -23,12 +23,15 @@ namespace DispatchAnmination
         /// </summary>
         private Rectangle[] _rectangle;
 
-
+        /// <summary>
+        /// 当前站点
+        /// </summary>
+        public int Site;
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="centerPoint"></param>
-        public AgvModule(String name, Point centerPoint)
+        public AgvModule(String name, Point centerPoint,int site)
         {
             _name = name;
 
@@ -39,6 +42,8 @@ namespace DispatchAnmination
             _lines = new Point[5];
 
             _rectangle = new Rectangle[2];
+
+            Site = site;
 
             update(centerPoint);
         }

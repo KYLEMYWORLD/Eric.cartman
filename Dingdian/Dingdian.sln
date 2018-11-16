@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteHelpler", "SQLiteHelp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogHelper", "LogHelper\LogHelper.csproj", "{391FE06C-2B2A-464E-ACA6-35109D57D96E}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DingSetUp", "DingSetUp\DingSetUp.vdproj", "{F7239423-3FFD-48AE-BC64-A4B7238483B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,8 @@ Global
 		{391FE06C-2B2A-464E-ACA6-35109D57D96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{391FE06C-2B2A-464E-ACA6-35109D57D96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{391FE06C-2B2A-464E-ACA6-35109D57D96E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7239423-3FFD-48AE-BC64-A4B7238483B7}.Debug|Any CPU.ActiveCfg = Debug
+		{F7239423-3FFD-48AE-BC64-A4B7238483B7}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
