@@ -49,15 +49,13 @@ namespace DispatchAnmination
                     {
                         if (First)
                         {
-
                             if (site._rate == 0)
                             {
-                                FirstP = new MPoint(site._siteP.X, site._siteP.Y);
-                                
+                                //FirstP = new MPoint(site._siteP.X, site._siteP.Y);
                             }
                             else
                             {
-                                FirstP = new MPoint(lineM._centerP.X, lineM._centerP.Y);
+                                //FirstP = new MPoint(lineM._centerP.X, lineM._centerP.Y);
                                 SecconP = new MPoint(site._siteP.X, site._siteP.Y);
                             }
                             First = false;
@@ -65,7 +63,7 @@ namespace DispatchAnmination
                         if (site._direction == (int)Direction.positive || site._direction == (int)Direction.both)//正卡
                         {
                             Line line = new Line();
-                            line.Direction = Direction.positive;
+                            line.Direction = (Direction)site._direction;
                             line.LineID = site.ID;
                             line.AddPoint(new MPoint(site._siteP.X, site._siteP.Y));
                             if (_linesPositive.Count() > 0)
@@ -78,7 +76,7 @@ namespace DispatchAnmination
                         if (site._direction == (int)Direction.negative || site._direction == (int)Direction.both)//反卡
                         {
                             Line line = new Line();
-                            line.Direction = Direction.positive;
+                            line.Direction = (Direction)site._direction;
                             line.LineID = site.ID;
                             line.AddPoint(new MPoint(site._siteP.X, site._siteP.Y));
                             if (_linesNagetivie.Count() > 0)
@@ -89,7 +87,7 @@ namespace DispatchAnmination
                         }
                     }
                 }
-                else//没站点，只是一条线
+                else  //没站点，只是一条线
                 {
                     if (_linesPositive.Count() > 0)
                     {
@@ -97,8 +95,11 @@ namespace DispatchAnmination
                         _linesPositive[_linesPositive.Count()- 1].AddPoint(new MPoint(lineM._endP.X, lineM._endP.Y));
 
                     }
-                    else if (_linesNagetivie.Count() > 0)
+
+                    if (_linesNagetivie.Count() > 0)
                     {
+                        _linesNagetivie[_linesNagetivie.Count() - 1].AddPoint(new MPoint(lineM._centerP.X, lineM._centerP.Y));
+                        _linesNagetivie[_linesNagetivie.Count() - 1].AddPoint(new MPoint(lineM._endP.X, lineM._endP.Y));
 
                     }
                 }
@@ -106,7 +107,7 @@ namespace DispatchAnmination
             }
 
             //处理第一个点和最后一个点连起来
-            if (FirstP != null) _linesPositive[_linesPositive.Count() - 1].AddPoint(FirstP);
+            //if (FirstP != null) _linesPositive[_linesPositive.Count() - 1].AddPoint(FirstP);
             if (SecconP != null) _linesPositive[_linesPositive.Count() - 1].AddPoint(SecconP);
         }
     }

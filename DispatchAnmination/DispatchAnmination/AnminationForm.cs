@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DispatchAnmination.Config;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,7 +29,12 @@ namespace DispatchAnmination
 
             ModuleControl.AddLinesToModule(xml._lineDatas);
             LineDateCenter.AddLineData();
-            ModuleControl.AddAgvToModule(null);
+            //ModuleControl.AddAgvToModule(null);
+            ModuleControl.AddAgvToModule("AGV001",23);
+            ModuleControl.AddAgvToModule("AGV002",33);
+            ModuleControl.AddAgvToModule("AGV003",23,50);
+            ModuleControl.AddAgvToModule("AGV004",34);
+
         }
 
         private Point point = new Point(500, 500);
@@ -48,14 +54,20 @@ namespace DispatchAnmination
         {
             point = Control.MousePosition;
             anminationPicBox.Invalidate();
-            AgvUpdateClass.UpDateAgv("AGV001");
-            AgvUpdateClass.UpDateAgv("AGV002");
-            AgvUpdateClass.UpDateAgv("AGV003");
+            AgvSiteMaster.UpDateAgv("AGV001");
+            AgvSiteMaster.UpDateAgv("AGV002");
+            AgvSiteMaster.UpDateAgv("AGV003");
+            AgvSiteMaster.UpDateAgv("AGV004");
         }
 
         private void LinePosNegBtn_Click(object sender, EventArgs e)
         {
             LineInfoForm.newInstance().Show();
+        }
+
+        private void DisplaySetBtn_Click(object sender, EventArgs e)
+        {
+            DisplaySetForm.newInstance().Show();
         }
     }
 }

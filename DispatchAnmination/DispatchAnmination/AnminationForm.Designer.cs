@@ -37,6 +37,7 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.LinePosNegBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.DisplaySetBtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.anminationPicBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,7 +82,8 @@
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LinePosNegBtn});
+            this.LinePosNegBtn,
+            this.DisplaySetBtn});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -104,6 +106,13 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.panel1.Size = new System.Drawing.Size(984, 761);
             this.panel1.TabIndex = 2;
+            // 
+            // DisplaySetBtn
+            // 
+            this.DisplaySetBtn.Name = "DisplaySetBtn";
+            this.DisplaySetBtn.Size = new System.Drawing.Size(180, 22);
+            this.DisplaySetBtn.Text = "显示设置";
+            this.DisplaySetBtn.Click += new System.EventHandler(this.DisplaySetBtn_Click);
             // 
             // AnminationForm
             // 
@@ -134,6 +143,7 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem LinePosNegBtn;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem DisplaySetBtn;
     }
 }
 

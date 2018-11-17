@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DispatchAnmination.Const;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -92,13 +93,14 @@ namespace DispatchAnmination
         {
             g.DrawLine(_pen, _centerP, _endP);
 
-            if (_sitePos.Count() > 0)
+            if (_sitePos.Count() > 0 && ConstBA.IsShow_Site)
             {
                 foreach(SitePos site in _sitePos)
                 {
                     g.FillEllipse(_brush,site._siteP.X - _siteCircleSize/2,site._siteP.Y - _siteCircleSize / 2, _siteCircleSize, _siteCircleSize);
-                    g.DrawString(site.UpName+"("+ site._siteP.X+","+ site._siteP.Y+")", _font, _brushRed, site._siteP.X -10, site._siteP.Y - 20);
-                    g.DrawString(site.Name, _fontMin, _brush, site._siteP.X - 10, site._siteP.Y + 10);
+                    if(ConstBA.IsShow_SitePoint) g.DrawString("(" + site._siteP.X + "," + site._siteP.Y + ")", _font, _brush, site._siteP.X - 10, site._siteP.Y - 40);
+                    if(ConstBA.IsShow_SiteUpName) g.DrawString(site.UpName, _font, _brushRed, site._siteP.X -10, site._siteP.Y - 20);//+"("+ site._siteP.X+","+ site._siteP.Y+")"
+                    if(ConstBA.IsShow_SiteName) g.DrawString(site.Name, _fontMin, _brush, site._siteP.X - 10, site._siteP.Y + 10);
                 }
             }
         }

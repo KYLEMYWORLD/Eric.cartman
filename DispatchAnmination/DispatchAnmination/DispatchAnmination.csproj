@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgvModule.cs" />
+    <Compile Include="Module\AgvModule.cs" />
     <Compile Include="Anmination.cs" />
     <Compile Include="AnminationForm.cs">
       <SubType>Form</SubType>
@@ -51,22 +51,33 @@
     <Compile Include="AnminationForm.Designer.cs">
       <DependentUpon>AnminationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LineInfoForm.cs">
+    <Compile Include="Config\DisplaySetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LineInfoForm.Designer.cs">
+    <Compile Include="Config\DisplaySetForm.Designer.cs">
+      <DependentUpon>DisplaySetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Const\ConstBA.cs" />
+    <Compile Include="Config\LineInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Config\LineInfoForm.Designer.cs">
       <DependentUpon>LineInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LineModule.cs" />
+    <Compile Include="Module\AgvSiteMaster.cs" />
+    <Compile Include="Module\LineModule.cs" />
     <Compile Include="LineSitePData.cs" />
-    <Compile Include="Module.cs" />
-    <Compile Include="PlcModule.cs" />
+    <Compile Include="Module\Module.cs" />
+    <Compile Include="Module\PlcModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AnminationForm.resx">
       <DependentUpon>AnminationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LineInfoForm.resx">
+    <EmbeddedResource Include="Config\DisplaySetForm.resx">
+      <DependentUpon>DisplaySetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Config\LineInfoForm.resx">
       <DependentUpon>LineInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
