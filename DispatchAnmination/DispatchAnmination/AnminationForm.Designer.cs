@@ -36,8 +36,9 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.LinePosNegBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.DisplaySetBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.MapConfigBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.anminationPicBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -52,7 +53,7 @@
             this.anminationPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.anminationPicBox.TabIndex = 0;
             this.anminationPicBox.TabStop = false;
-            this.anminationPicBox.Paint += new System.Windows.Forms.PaintEventHandler(this.anmination_picBox_Paint);
+            this.anminationPicBox.Paint += new System.Windows.Forms.PaintEventHandler(this.Anmination_picBox_Paint);
             // 
             // imageList
             // 
@@ -65,9 +66,8 @@
             // 
             // anminateTimer
             // 
-            this.anminateTimer.Enabled = true;
             this.anminateTimer.Interval = 50;
-            this.anminateTimer.Tick += new System.EventHandler(this.anminateTimer_Tick);
+            this.anminateTimer.Tick += new System.EventHandler(this.AnminateTimer_Tick);
             // 
             // toolStrip1
             // 
@@ -83,7 +83,8 @@
             // 
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LinePosNegBtn,
-            this.DisplaySetBtn});
+            this.DisplaySetBtn,
+            this.MapConfigBtn});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -93,9 +94,23 @@
             // LinePosNegBtn
             // 
             this.LinePosNegBtn.Name = "LinePosNegBtn";
-            this.LinePosNegBtn.Size = new System.Drawing.Size(180, 22);
+            this.LinePosNegBtn.Size = new System.Drawing.Size(124, 22);
             this.LinePosNegBtn.Text = "运动尺寸";
             this.LinePosNegBtn.Click += new System.EventHandler(this.LinePosNegBtn_Click);
+            // 
+            // DisplaySetBtn
+            // 
+            this.DisplaySetBtn.Name = "DisplaySetBtn";
+            this.DisplaySetBtn.Size = new System.Drawing.Size(124, 22);
+            this.DisplaySetBtn.Text = "显示设置";
+            this.DisplaySetBtn.Click += new System.EventHandler(this.DisplaySetBtn_Click);
+            // 
+            // MapConfigBtn
+            // 
+            this.MapConfigBtn.Name = "MapConfigBtn";
+            this.MapConfigBtn.Size = new System.Drawing.Size(124, 22);
+            this.MapConfigBtn.Text = "地图配置";
+            this.MapConfigBtn.Click += new System.EventHandler(this.MapConfigBtn_Click);
             // 
             // panel1
             // 
@@ -106,13 +121,6 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.panel1.Size = new System.Drawing.Size(984, 761);
             this.panel1.TabIndex = 2;
-            // 
-            // DisplaySetBtn
-            // 
-            this.DisplaySetBtn.Name = "DisplaySetBtn";
-            this.DisplaySetBtn.Size = new System.Drawing.Size(180, 22);
-            this.DisplaySetBtn.Text = "显示设置";
-            this.DisplaySetBtn.Click += new System.EventHandler(this.DisplaySetBtn_Click);
             // 
             // AnminationForm
             // 
@@ -144,6 +152,7 @@
         private System.Windows.Forms.ToolStripMenuItem LinePosNegBtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem DisplaySetBtn;
+        private System.Windows.Forms.ToolStripMenuItem MapConfigBtn;
     }
 }
 

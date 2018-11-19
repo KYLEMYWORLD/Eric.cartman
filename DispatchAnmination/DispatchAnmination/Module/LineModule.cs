@@ -62,7 +62,7 @@ namespace DispatchAnmination
 
             foreach(SiteData site in lineData._siteDatas)
             {
-                AddSitePos(site.Id, site.Rate,site._direction, site._pointName,site._pointUpName);
+                AddSitePos(site.Id, site.Rate,site._direction, site._siteType, site._pointName,site._pointUpName);
             }
         }
 
@@ -73,9 +73,9 @@ namespace DispatchAnmination
         /// <param name="name">站点名称</param>
         /// <param name="id">站点ID</param>
         /// <param name="rate">站点在线路上的位置比例(0-100)</param>
-        public void AddSitePos(int id,int rate,int direction, String name ="站点",String upName = "")
+        public void AddSitePos(int id,int rate,int direction,SiteType type, String name ="站点",String upName = "")
         {
-            _sitePos.Add(new SitePos(id, GetSiteP(rate), direction,rate, name,upName ));
+            _sitePos.Add(new SitePos(id, GetSiteP(rate), direction,rate,type, name,upName ));
         }
 
         public Point GetSiteP(int rate)
@@ -97,6 +97,14 @@ namespace DispatchAnmination
             {
                 foreach(SitePos site in _sitePos)
                 {
+                    if (site._type == SiteType.HeadTialSite && !ConstBA.IsShow_HeadTialSite) continue;
+                    else if (site._type == SiteType.WaiteSite && !ConstBA.IsShow_WaiteSite) continue;
+                    else if (site._type == SiteType.SwerveSite && !ConstBA.IsShow_SwerveSite) continue;
+                    else if (site._type == SiteType.TrunRoundSite && !ConstBA.IsShow_TrunRoundSite) continue;
+                    else if (site._type == SiteType.ChargeSite && !ConstBA.IsShow_ChargeSite) continue;
+                    else if (site._type == SiteType.TrafficSite && !ConstBA.IsShow_TrafficSite) continue;
+                    else if (site._type == SiteType.NotTrafficSite && !ConstBA.IsShow_NotTrafficSite) continue;
+
                     g.FillEllipse(_brush,site._siteP.X - _siteCircleSize/2,site._siteP.Y - _siteCircleSize / 2, _siteCircleSize, _siteCircleSize);
                     if(ConstBA.IsShow_SitePoint) g.DrawString("(" + site._siteP.X + "," + site._siteP.Y + ")", _font, _brush, site._siteP.X - 10, site._siteP.Y - 40);
                     if(ConstBA.IsShow_SiteUpName) g.DrawString(site.UpName, _font, _brushRed, site._siteP.X -10, site._siteP.Y - 20);//+"("+ site._siteP.X+","+ site._siteP.Y+")"
@@ -162,7 +170,9 @@ namespace DispatchAnmination
 
         public int _rate;
 
-        public SitePos(int id, Point point, int direction, int rate, String name,String upName)
+        public SiteType _type;
+
+        public SitePos(int id, Point point, int direction, int rate,SiteType type, String name,String upName)
         {
             
             _id = id;
@@ -172,6 +182,8 @@ namespace DispatchAnmination
             _direction = direction;
 
             _rate = rate;
+
+            _type = type;
 
             _name = name;
 

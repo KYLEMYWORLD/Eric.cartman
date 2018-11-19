@@ -59,5 +59,40 @@ namespace DispatchAnmination.Config
             IsShowSitePointCB.Checked = ConstBA.IsShow_SitePoint;
             IsShowSiteNameCB.Checked = ConstBA.IsShow_SiteName;
         }
+
+        private void IsShowHeadTialSiteCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ConstBA.IsShow_HeadTialSite = IsShowHeadTialSiteCB.Checked;
+        }
+
+        private void IsShowWaiteSiteCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ConstBA.IsShow_WaiteSite = IsShowWaiteSiteCB.Checked;
+        }
+
+        private void IsShowSwerveSiteCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ConstBA.IsShow_SwerveSite = IsShowSwerveSiteCB.Checked;
+        }
+
+        private void IsShowTrunRoundSiteCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ConstBA.IsShow_TrunRoundSite = IsShowTrunRoundSiteCB.Checked;
+        }
+
+        private void IsShowChargeSiteCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ConstBA.IsShow_ChargeSite = IsShowChargeSiteCB.Checked;
+        }
+
+        private void IsShowTrafficSiteCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ConstBA.IsShow_TrafficSite = IsShowTrafficSiteCB.Checked;
+        }
+
+        private void IsShowNotTrafficSiteCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ConstBA.IsShow_NotTrafficSite = IsShowNotTrafficSiteCB.Checked;
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace DispatchAnmination
                 string appoint ="";
                 foreach (var p in line._points)
                 {
-                    appoint = appoint +"("+ p.x + "," + p.y+"), ";
+                    appoint = appoint +"("+ p.X + "," + p.Y+"), ";
                 }
                 item.SubItems.Add(appoint); //所有站点
 
@@ -56,7 +56,7 @@ namespace DispatchAnmination
                 string appoint = "";
                 foreach (var p in line._points)
                 {
-                    appoint = appoint + "(" + p.x + "," + p.y + "), ";
+                    appoint = appoint + "(" + p.X + "," + p.Y + "), ";
                 }
                 item.SubItems.Add(appoint); //所有站点
 

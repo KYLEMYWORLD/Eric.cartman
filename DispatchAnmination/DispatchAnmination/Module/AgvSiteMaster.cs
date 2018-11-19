@@ -82,6 +82,10 @@ namespace DispatchAnmination
             return 0;
         }
 
+
+        /// <summary>
+        /// 所有地标
+        /// </summary>
         private static int[] lines = { 23, 33, 15, 13, 21, 11, 22, 34, 24, 14 };
         public float GetRate()
         {
@@ -97,6 +101,12 @@ namespace DispatchAnmination
                 return 100;
             }
         }
+
+        /// <summary>
+        /// 获取当前
+        /// </summary>
+        /// <param name="site"></param>
+        /// <returns></returns>
         public int GetSite(int site)
         {
             if (site != 0)

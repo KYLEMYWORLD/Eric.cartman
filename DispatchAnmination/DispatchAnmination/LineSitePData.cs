@@ -36,8 +36,10 @@ namespace DispatchAnmination
 
             return null;
         }
-        private static MPoint FirstP,SecconP;
-        private static Boolean First = true;
+
+        //private static readonly MPoint FirstP;
+        private static MPoint SecconP;
+        private static bool First = true;
         public static void AddLineData()
         {
             foreach(LineModule lineM in ModuleControl._lineModules)
@@ -62,9 +64,11 @@ namespace DispatchAnmination
                         }
                         if (site._direction == (int)Direction.positive || site._direction == (int)Direction.both)//正卡
                         {
-                            Line line = new Line();
-                            line.Direction = (Direction)site._direction;
-                            line.LineID = site.ID;
+                            Line line = new Line
+                            {
+                                Direction = (Direction)site._direction,
+                                LineID = site.ID
+                            };
                             line.AddPoint(new MPoint(site._siteP.X, site._siteP.Y));
                             if (_linesPositive.Count() > 0)
                             {
@@ -75,9 +79,11 @@ namespace DispatchAnmination
 
                         if (site._direction == (int)Direction.negative || site._direction == (int)Direction.both)//反卡
                         {
-                            Line line = new Line();
-                            line.Direction = (Direction)site._direction;
-                            line.LineID = site.ID;
+                            Line line = new Line
+                            {
+                                Direction = (Direction)site._direction,
+                                LineID = site.ID
+                            };
                             line.AddPoint(new MPoint(site._siteP.X, site._siteP.Y));
                             if (_linesNagetivie.Count() > 0)
                             {
@@ -144,8 +150,8 @@ namespace DispatchAnmination
         /// <returns></returns>
         public static int GetLenght(MPoint p1, MPoint p2)
         {
-            int x = p1.x - p2.x;
-            int y = p1.y - p2.y;
+            int x = p1.X - p2.X;
+            int y = p1.Y - p2.Y;
             return (int)Math.Sqrt((double)(x * x) + (double)(y * y));
         }
 
@@ -190,8 +196,8 @@ namespace DispatchAnmination
         /// <returns></returns>
         public MPoint GetMP(double rate, MPoint p1, MPoint p2)
         {
-            int x = ((int)((double)rate * (p2.x - p1.x)) + p1.x);
-            int y = ((int)((double)rate * (p2.y - p1.y)) + p1.y);
+            int x = ((int)((double)rate * (p2.X - p1.X)) + p1.X);
+            int y = ((int)((double)rate * (p2.Y - p1.Y)) + p1.Y);
             return new MPoint(x, y);
         }
     }
@@ -206,16 +212,16 @@ namespace DispatchAnmination
         /// <summary>
         /// 
         /// </summary>
-        internal int id { set; get; }
+        internal int Id { set; get; }
         public int ID
         {
             set
             {
-                id = value; 
+                Id = value; 
             }
             get
             {
-                return id;
+                return Id;
             }
         }
         /// <summary>
@@ -225,12 +231,12 @@ namespace DispatchAnmination
         /// <param name="y"></param>
         public MPoint(int x,int y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
         }
 
-        internal int x { set; get; }
-        internal int y { set; get; }
+        internal int X { set; get; }
+        internal int Y { set; get; }
     }
 
     /// <summary>

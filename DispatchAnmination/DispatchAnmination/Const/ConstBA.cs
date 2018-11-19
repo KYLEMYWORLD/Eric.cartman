@@ -28,5 +28,45 @@ namespace DispatchAnmination.Const
         /// 是否展示站点坐标信息
         /// </summary>
         public static bool IsShow_SitePoint = true;
+
+        /// <summary>
+        /// 是否展示窑头窑尾地标
+        /// </summary>
+        public static bool IsShow_HeadTialSite = true;
+
+        /// <summary>
+        /// 是否展示等待点
+        /// </summary>
+        public static bool IsShow_WaiteSite = true;
+
+
+        /// <summary>
+        /// 是否展示转弯点
+        /// </summary>
+        public static bool IsShow_SwerveSite = true;
+
+
+        /// <summary>
+        /// 是否展示掉头点
+        /// </summary>
+        public static bool IsShow_TrunRoundSite = true;
+
+        /// <summary>
+        /// 是否展示充电点
+        /// </summary>
+        public static bool IsShow_ChargeSite = true;
+
+
+        /// <summary>
+        /// 是否展示交通管制点
+        /// </summary>
+        public static bool IsShow_TrafficSite = true;
+
+
+        /// <summary>
+        /// 是否展示非交通管制点
+        /// </summary>
+        public static bool IsShow_NotTrafficSite = true;
+
     }
 }

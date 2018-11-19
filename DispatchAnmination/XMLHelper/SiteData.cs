@@ -5,6 +5,43 @@ using System.Text;
 
 namespace XMLHelper
 {
+    public enum SiteType
+    {
+        /// <summary>
+        /// 窑头，窑尾地标
+        /// </summary>
+        HeadTialSite = 0,
+        /// <summary>
+        /// 等待点
+        /// </summary>
+        WaiteSite = 1,
+
+        /// <summary>
+        /// 转弯点
+        /// </summary>
+        SwerveSite = 2,
+
+        /// <summary>
+        /// 充电完成回来掉头点
+        /// </summary>
+        TrunRoundSite = 3,
+
+        /// <summary>
+        /// 充电点
+        /// </summary>
+        ChargeSite = 4,
+
+        /// <summary>
+        /// 交通管制点
+        /// </summary>
+        TrafficSite =5,
+
+        /// <summary>
+        /// 非交通管制点
+        /// </summary>
+        NotTrafficSite = 6
+    }
+
     /// <summary>
     /// 站点信息结构
     /// </summary>
@@ -32,6 +69,8 @@ namespace XMLHelper
         private int _rate;
 
         public int _direction;
+
+        public SiteType _siteType;
 
         /// <summary>
         /// 站点在线上的比例(0-100)
@@ -66,13 +105,15 @@ namespace XMLHelper
         /// <param name="y">地标点Y</param>
         /// <param name="id">地标ID</param>
         /// <param name="name">地标名称</param>
-        public SiteData(int id,int rate,int direction, String name ="",String upname="")
+        public SiteData(int id,int rate,int direction,int sitetype, String name ="",String upname="")
         {
             _pointId = id;
             _rate = rate;
             _direction = direction;
             _pointName = name;
             _pointUpName = upname;
+
+            _siteType = (SiteType)sitetype;
         }
     }
 }

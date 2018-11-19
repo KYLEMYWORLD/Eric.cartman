@@ -1,4 +1,5 @@
 ﻿using DispatchAnmination.Config;
+using DispatchAnmination.MapConfig;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,13 +45,13 @@ namespace DispatchAnmination
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void anmination_picBox_Paint(object sender, PaintEventArgs e)
+        private void Anmination_picBox_Paint(object sender, PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
             anmination.Draw(graphics, point);
         }
 
-        private void anminateTimer_Tick(object sender, EventArgs e)
+        private void AnminateTimer_Tick(object sender, EventArgs e)
         {
             point = Control.MousePosition;
             anminationPicBox.Invalidate();
@@ -68,6 +69,11 @@ namespace DispatchAnmination
         private void DisplaySetBtn_Click(object sender, EventArgs e)
         {
             DisplaySetForm.newInstance().Show();
+        }
+
+        private void MapConfigBtn_Click(object sender, EventArgs e)
+        {
+            MapConfigForm.NewInstance().Show();
         }
     }
 }

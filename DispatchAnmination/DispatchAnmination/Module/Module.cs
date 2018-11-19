@@ -38,7 +38,7 @@ namespace DispatchAnmination
                 point = LineDateCenter.GetMPointOnLine(siteid, rate);
                 if(point != null)
                 {
-                    agv.update(new Point(point.x, point.y));
+                    agv.update(new Point(point.X, point.Y));
                 }
             }
         }
@@ -48,7 +48,7 @@ namespace DispatchAnmination
             MPoint p = LineDateCenter.GetMPointOnLine(site, rate);
             if (p != null)
             {
-                _agvModules.Add(new AgvModule(agvname, new Point(p.x, p.y), site));
+                _agvModules.Add(new AgvModule(agvname, new Point(p.X, p.Y), site));
                 AgvSiteMaster.AddAgvSiteRate(agvname, site, rate);
             }
         }
@@ -63,17 +63,17 @@ namespace DispatchAnmination
 
             if (p != null)
             {
-                _agvModules.Add(new AgvModule("AGV001", new Point(p.x, p.y),23));
+                _agvModules.Add(new AgvModule("AGV001", new Point(p.X, p.Y),23));
                 AgvSiteMaster.AddAgvSiteRate("AGV001", 23, 0);
             }
             if (p2 != null)
             {
-                _agvModules.Add(new AgvModule("AGV002", new Point(p2.x, p2.y),34));
+                _agvModules.Add(new AgvModule("AGV002", new Point(p2.X, p2.Y),34));
                 AgvSiteMaster.AddAgvSiteRate("AGV002", 34, 0);
             }
             if (p3 != null)
             {
-                _agvModules.Add(new AgvModule("AGV003", new Point(p3.x, p3.y),33));
+                _agvModules.Add(new AgvModule("AGV003", new Point(p3.X, p3.Y),33));
                 AgvSiteMaster.AddAgvSiteRate("AGV003", 33, 0);
 
             }

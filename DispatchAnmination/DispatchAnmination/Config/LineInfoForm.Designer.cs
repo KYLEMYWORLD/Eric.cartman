@@ -33,10 +33,11 @@
             // 
             // LineInfoListView
             // 
+            this.LineInfoListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LineInfoListView.GridLines = true;
-            this.LineInfoListView.Location = new System.Drawing.Point(12, 12);
+            this.LineInfoListView.Location = new System.Drawing.Point(0, 0);
             this.LineInfoListView.Name = "LineInfoListView";
-            this.LineInfoListView.Size = new System.Drawing.Size(674, 518);
+            this.LineInfoListView.Size = new System.Drawing.Size(698, 542);
             this.LineInfoListView.TabIndex = 1;
             this.LineInfoListView.UseCompatibleStateImageBehavior = false;
             this.LineInfoListView.View = System.Windows.Forms.View.Details;

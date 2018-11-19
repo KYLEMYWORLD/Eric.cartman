@@ -76,11 +76,12 @@ namespace XMLHelper
                     foreach(XmlElement s in nodeList)
                     {
                         int sid = int.Parse(s.GetAttribute("id"));
-                        String name = s.GetAttribute("name");
-                        String upname = s.GetAttribute("upname");
+                        string name = s.GetAttribute("name");
+                        string upname = s.GetAttribute("upname");
                         int rate = int.Parse(s.GetAttribute("rate"));
                         int direction = int.Parse(s.GetAttribute("direction"));
-                        lineData.AddSite(new SiteData(sid,rate,direction,name,upname));
+                        int type = int.Parse(s.GetAttribute("type"));
+                        lineData.AddSite(new SiteData(sid,rate,direction,type,name,upname));
                     }
                 }
 
