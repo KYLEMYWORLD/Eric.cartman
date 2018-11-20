@@ -22,7 +22,7 @@ namespace DispatchAnmination
         /// </summary>
         /// <param name="name">PLC名称</param>
         /// <param name="point">PLC中心点</param>
-        public PlcModule(String name, Point point)
+        public PlcModule(string name, Point point)
         {
             _name = name;
 
@@ -32,7 +32,7 @@ namespace DispatchAnmination
 
             _pen = new Pen(new SolidBrush(Color.Black));
 
-            update(point);
+            Update(point);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace DispatchAnmination
         /// 更新当前Module的图像位置
         /// </summary>
         /// <param name="centerPoint"></param>
-        public override void update(Point centerPoint)
+        public override void Update(Point centerPoint)
         {
             _rectangle.X = _centerP.X - _size * _scale;
 

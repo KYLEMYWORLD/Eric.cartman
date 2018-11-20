@@ -31,7 +31,7 @@ namespace DispatchAnmination
         /// 构造函数
         /// </summary>
         /// <param name="centerPoint"></param>
-        public AgvModule(String name, Point centerPoint,int site)
+        public AgvModule(string name, Point centerPoint,int site)
         {
             _name = name;
 
@@ -45,13 +45,13 @@ namespace DispatchAnmination
 
             Site = site;
 
-            update(centerPoint);
+            Update(centerPoint);
         }
         /// <summary>
         /// 更新模型中心点,同时更新其他边线的点位置
         /// </summary>
         /// <param name="centerPoint"></param>
-        public override void update(Point centerPoint)
+        public override void Update(Point centerPoint)
         {
             _centerP = centerPoint;
             //左上点

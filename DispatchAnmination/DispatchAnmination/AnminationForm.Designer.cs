@@ -66,6 +66,7 @@
             // 
             // anminateTimer
             // 
+            this.anminateTimer.Enabled = true;
             this.anminateTimer.Interval = 50;
             this.anminateTimer.Tick += new System.EventHandler(this.AnminateTimer_Tick);
             // 

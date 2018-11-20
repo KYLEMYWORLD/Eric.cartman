@@ -30,22 +30,89 @@ namespace XMLHelper
             _xmlHepler = new XmlHelper();
 
             _lineDatas = new List<LineData>();
+
+            AgvLineList = new List<AgvLineData>();
         }
 
         /// <summary>
         /// 解析文档，初始化图像数据
         /// </summary>
-        public void DoAnalyze()
+        public void DoAnalyze(string fileName = "conf.xml")//"mapconf.xml" 地图配置保存的文件明
         {
-            _xmlHepler.CreateOrLoadXMLFile();
+            _xmlHepler.CreateOrLoadXMLFile(fileName);
+            if (_xmlHepler.GetXmlNodeList("Lines").Count == 0)
+            {
+                XmlElement lines = _xmlHepler.CreateElement("Lines");
+                lines.SetAttribute("id", "lines");
+                _xmlHepler.AddToNode("Config", lines);
+                _xmlHepler.SaveXMLFile(fileName);
+                _xmlHepler.CreateOrLoadXMLFile(fileName);
+            }
+
             AnalyzeLineMoveSize(_xmlHepler.GetXmlNodeList("Size"));
             AnalyzeLines(_xmlHepler.GetXmlNodeList("Line"));
-
-
         }
+
+        /// <summary>
+        /// 用于AGV线路配置
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void DoAgvLineAnalyze(string fileName = "conf.xml")
+        {
+            _xmlHepler.CreateOrLoadXMLFile(fileName);
+            if (_xmlHepler.GetXmlNodeList("AgvLine").Count == 0)
+            {
+                CreateAgvLineNote();
+                _xmlHepler.SaveXMLFile(fileName);
+                _xmlHepler.CreateOrLoadXMLFile(fileName);
+            }
+            AnalyzeAgvLine(_xmlHepler.GetXmlNodeList("AgvLine"));
+        }
+        private void CreateAgvLineNote()
+        {
+            XmlElement agvlines = _xmlHepler.CreateElement("AgvLines");
+            agvlines.SetAttribute("id", "agvlines");
+            _xmlHepler.AddToNode("Config", agvlines);
+        }
+
+        public List<AgvLineData> AgvLineList;
+        /// <summary>
+        /// 解析Agv行走线路
+        /// </summary>
+        /// <param name="agvLineList"></param>
+        public void AnalyzeAgvLine(XmlNodeList agvLineList)
+        {
+            if (agvLineList.Count == 0) return;
+
+            foreach (XmlElement a in agvLineList)
+            {
+                int nowsite = int.Parse(a.GetAttribute("nowsite"));
+                int isspecial = int.Parse(a.GetAttribute("isspecial"));
+                int dessite = int.Parse(a.GetAttribute("dessite"));
+                AgvLineData agvLineData = new AgvLineData
+                {
+                    NowSite = nowsite,
+                    IsSpecial = isspecial == 1 ? true : false,
+                    DesSite = dessite
+                };
+
+                XmlNodeList points = a.GetElementsByTagName("Point");
+                if (points != null)
+                {
+                    foreach (XmlElement p in points)
+                    {
+                        int x = int.Parse(p.GetAttribute("x"));
+                        int y = int.Parse(p.GetAttribute("y"));
+                        agvLineData.Points.Add(new AgvPoint { X = x, Y = y });
+                    }
+                }
+                AgvLineList.Add(agvLineData);
+            }
+        }
+
         public void AnalyzeLineMoveSize(XmlNodeList nodeList)
         {
-            if (nodeList == null) return;
+            if (nodeList.Count == 0) return;
             LineMoveSize._lineMoveSize.Clear();
             foreach (XmlElement size in nodeList)
             {
@@ -60,7 +127,7 @@ namespace XMLHelper
         /// </summary>
         public void AnalyzeLines(XmlNodeList lineXml)
         {
-            if (lineXml == null) return;
+            if (lineXml.Count == 0) return;
             foreach(XmlElement e in lineXml)
             {
                 int startx = int.Parse(e.GetAttribute("startx"));
@@ -87,6 +154,72 @@ namespace XMLHelper
 
                 _lineDatas.Add(lineData);
             }
+        }
+        /// <summary>
+        /// 保存线路信息
+        /// </summary>
+        public void SaveLineToFile(List<LineData> lineDatas)
+        {
+            foreach (var line in lineDatas)
+            {
+                XmlElement lineX = _xmlHepler.CreateElement("Line");
+                lineX.SetAttribute("startx", line._startX + "");
+                lineX.SetAttribute("starty", line._startY + "");
+                lineX.SetAttribute("endx", line._endX + "");
+                lineX.SetAttribute("endy", line._endY + "");
+                lineX.SetAttribute("id", line._id + "");
+                foreach(var site in line._siteDatas)
+                {
+                    XmlElement siteX = _xmlHepler.CreateElement("Site");
+                    siteX.SetAttribute("id",site.Id+"");
+                    siteX.SetAttribute("name", site._pointName);
+                    siteX.SetAttribute("upname", site._pointUpName);
+                    siteX.SetAttribute("rate", site.Rate+"");
+                    siteX.SetAttribute("direction", site._direction+"");
+                    siteX.SetAttribute("type", (int)site._siteType+"");
+                    lineX.AppendChild(siteX);
+                }
+                _xmlHepler.AddToNode("Config/Lines", lineX);
+            }
+
+            _xmlHepler.SaveXMLFile("mapconf.xml");
+        }
+
+        public void SaveMapConfigFile(string filename = "mapconf.xml")
+        {
+            _xmlHepler.SaveXMLFile(filename);
+        }
+
+        public void SaveAgvLineToFile(List<AgvLineData> agvLine)
+        {
+            XmlElement agvlines = _xmlHepler.GetSingleElement("Config/AgvLines");
+            if (agvlines == null)
+            {
+                CreateAgvLineNote();
+            }
+            else
+            {
+                agvlines.RemoveAll();
+                _xmlHepler.SaveXMLFile("conf.xml");
+                DoAgvLineAnalyze();
+                agvlines = _xmlHepler.GetSingleElement("Config/AgvLines");
+            }
+            foreach(AgvLineData line in agvLine)
+            {
+                XmlElement agvline = _xmlHepler.CreateElement("AgvLine");
+                agvline.SetAttribute("nowsite", line.NowSite + "");
+                agvline.SetAttribute("isspecial", line.IsSpecial ? "1" : "0");
+                agvline.SetAttribute("dessite", line.DesSite + "");
+                foreach(AgvPoint p in line.Points)
+                {
+                    XmlElement point = _xmlHepler.CreateElement("Point");
+                    point.SetAttribute("x", p.X + "");
+                    point.SetAttribute("y", p.Y + "");
+                    agvline.AppendChild(point);
+                }
+                _xmlHepler.AddToNode("Config/AgvLines", agvline);
+            }
+            _xmlHepler.SaveXMLFile("conf.xml");
         }
     }
 }

@@ -59,12 +59,12 @@ namespace XMLHelper
         /// <summary>
         /// 站点名称
         /// </summary>
-        public String _pointName { set; get; }
+        public string _pointName { set; get; }
 
         /// <summary>
         /// 站点上方信息
         /// </summary>
-        public String _pointUpName { set; get; }
+        public string _pointUpName { set; get; }
 
         private int _rate;
 
@@ -105,7 +105,7 @@ namespace XMLHelper
         /// <param name="y">地标点Y</param>
         /// <param name="id">地标ID</param>
         /// <param name="name">地标名称</param>
-        public SiteData(int id,int rate,int direction,int sitetype, String name ="",String upname="")
+        public SiteData(int id,int rate,int direction,int sitetype, string name ="",string upname="")
         {
             _pointId = id;
             _rate = rate;

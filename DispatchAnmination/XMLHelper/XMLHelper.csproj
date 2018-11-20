@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgvData.cs" />
+    <Compile Include="AgvLineData.cs" />
     <Compile Include="LineData.cs" />
     <Compile Include="LineMoveSize.cs" />
     <Compile Include="SiteData.cs" />

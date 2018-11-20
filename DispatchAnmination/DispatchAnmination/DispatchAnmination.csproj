@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgvLine\AgvLineMaster.cs" />
+    <Compile Include="AgvLine\LinePublic.cs" />
     <Compile Include="MapConfig\MapConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,15 +66,15 @@
       <DependentUpon>DisplaySetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Const\ConstBA.cs" />
-    <Compile Include="Config\LineInfoForm.cs">
+    <Compile Include="Config\AgvLineForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Config\LineInfoForm.Designer.cs">
-      <DependentUpon>LineInfoForm.cs</DependentUpon>
+    <Compile Include="Config\AgvLineForm.Designer.cs">
+      <DependentUpon>AgvLineForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\AgvSiteMaster.cs" />
     <Compile Include="Module\LineModule.cs" />
-    <Compile Include="LineSitePData.cs" />
+    <Compile Include="AgvLine\LineSitePData.cs" />
     <Compile Include="Module\Module.cs" />
     <Compile Include="Module\PlcModule.cs" />
     <Compile Include="Program.cs" />
@@ -83,8 +85,8 @@
     <EmbeddedResource Include="Config\DisplaySetForm.resx">
       <DependentUpon>DisplaySetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Config\LineInfoForm.resx">
-      <DependentUpon>LineInfoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Config\AgvLineForm.resx">
+      <DependentUpon>AgvLineForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MapConfig\MapConfigForm.resx">
       <DependentUpon>MapConfigForm.cs</DependentUpon>

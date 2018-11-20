@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DispatchAnmination.AgvLine;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace DispatchAnmination
         /// <param name="name"></param>
         /// <param name="siteid"></param>
         /// <param name="rate"></param>
-        public static void UpdateAgvSite(String name, int siteid, float rate)
+        public static void UpdateAgvSite(string name, int siteid, float rate)
         {
             AgvModule agv = _agvModules.Find(c => { return c._name.Equals(name); });
            
@@ -38,7 +39,28 @@ namespace DispatchAnmination
                 point = LineDateCenter.GetMPointOnLine(siteid, rate);
                 if(point != null)
                 {
-                    agv.update(new Point(point.X, point.Y));
+                    agv.Update(new Point(point.X, point.Y));
+                }
+            }
+        }
+
+        /// <summary>
+        /// 新更新AGV坐标方法方法
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="siteid"></param>
+        /// <param name="rate"></param>
+        /// <param name="dessite"></param>
+        public static void UpdateAgvSiteNew(string name, int siteid, float rate, int dessite)
+        {
+            AgvModule agv = _agvModules.Find(c => { return c._name.Equals(name); });
+
+            if (agv != null)
+            {
+                point = LineDateCenter.GetMPointOnLine(siteid, rate);
+                if (point != null)
+                {
+                    agv.Update(new Point(point.X, point.Y));
                 }
             }
         }
@@ -50,32 +72,6 @@ namespace DispatchAnmination
             {
                 _agvModules.Add(new AgvModule(agvname, new Point(p.X, p.Y), site));
                 AgvSiteMaster.AddAgvSiteRate(agvname, site, rate);
-            }
-        }
-
-        public static void AddAgvToModule(List<AgvData> agvDatas)
-        {
-            MPoint p = LineDateCenter.GetMPointOnLine(23, 0);
-            MPoint p2 = LineDateCenter.GetMPointOnLine(34, 25);
-            MPoint p3 = LineDateCenter.GetMPointOnLine(33, 100);
-
-            
-
-            if (p != null)
-            {
-                _agvModules.Add(new AgvModule("AGV001", new Point(p.X, p.Y),23));
-                AgvSiteMaster.AddAgvSiteRate("AGV001", 23, 0);
-            }
-            if (p2 != null)
-            {
-                _agvModules.Add(new AgvModule("AGV002", new Point(p2.X, p2.Y),34));
-                AgvSiteMaster.AddAgvSiteRate("AGV002", 34, 0);
-            }
-            if (p3 != null)
-            {
-                _agvModules.Add(new AgvModule("AGV003", new Point(p3.X, p3.Y),33));
-                AgvSiteMaster.AddAgvSiteRate("AGV003", 33, 0);
-
             }
         }
 
@@ -100,7 +96,7 @@ namespace DispatchAnmination
         /// <summary>
         /// 模型名称
         /// </summary>
-        internal String _name;
+        internal string _name;
 
         /// <summary>
         /// 模型中心点
@@ -138,7 +134,7 @@ namespace DispatchAnmination
         /// 更新模型中心点
         /// </summary>
         /// <param name="centerPoint"></param>
-        public abstract void update(Point centerPoint);
+        public abstract void Update(Point centerPoint);
 
         /// <summary>
         /// 将模型画用GUI画出来

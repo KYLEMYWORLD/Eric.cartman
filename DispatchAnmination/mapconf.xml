@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Config>
+  <Lines id="lines">
+    <Line startx="172" starty="152" endx="782" endy="264" id="0">
+      <Site id="2" name="22" upname="22" rate="3" direction="2" type="4" />
+    </Line>
+  </Lines>
+</Config>

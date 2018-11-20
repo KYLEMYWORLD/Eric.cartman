@@ -60,6 +60,9 @@
             this.AddNewSiteBtn = new System.Windows.Forms.Button();
             this.AddNewLineBtn = new System.Windows.Forms.Button();
             this.MapTimer = new System.Windows.Forms.Timer(this.components);
+            this.label11 = new System.Windows.Forms.Label();
+            this.LineSelectedLab = new System.Windows.Forms.Label();
+            this.SaveToMapFileBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MapConfigPB)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +82,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.SaveToMapFileBtn);
+            this.panel1.Controls.Add(this.LineSelectedLab);
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.LineEndPyTB);
             this.panel1.Controls.Add(this.LineEndPxTB);
             this.panel1.Controls.Add(this.label10);
@@ -189,12 +195,13 @@
             // 
             // EditLineSiteBtn
             // 
-            this.EditLineSiteBtn.Location = new System.Drawing.Point(574, 15);
+            this.EditLineSiteBtn.Location = new System.Drawing.Point(574, 35);
             this.EditLineSiteBtn.Name = "EditLineSiteBtn";
             this.EditLineSiteBtn.Size = new System.Drawing.Size(75, 23);
             this.EditLineSiteBtn.TabIndex = 21;
             this.EditLineSiteBtn.Text = "修改站点";
             this.EditLineSiteBtn.UseVisualStyleBackColor = true;
+            this.EditLineSiteBtn.Click += new System.EventHandler(this.EditLineSiteBtn_Click);
             // 
             // DeleteLineBtn
             // 
@@ -240,7 +247,7 @@
             // 
             // SiteUpNameTB
             // 
-            this.SiteUpNameTB.Location = new System.Drawing.Point(528, 208);
+            this.SiteUpNameTB.Location = new System.Drawing.Point(528, 228);
             this.SiteUpNameTB.Name = "SiteUpNameTB";
             this.SiteUpNameTB.Size = new System.Drawing.Size(121, 21);
             this.SiteUpNameTB.TabIndex = 16;
@@ -248,7 +255,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(479, 208);
+            this.label6.Location = new System.Drawing.Point(479, 228);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 12);
             this.label6.TabIndex = 15;
@@ -257,7 +264,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(479, 180);
+            this.label5.Location = new System.Drawing.Point(479, 200);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 14;
@@ -265,7 +272,7 @@
             // 
             // SiteNameTB
             // 
-            this.SiteNameTB.Location = new System.Drawing.Point(528, 172);
+            this.SiteNameTB.Location = new System.Drawing.Point(528, 192);
             this.SiteNameTB.Name = "SiteNameTB";
             this.SiteNameTB.Size = new System.Drawing.Size(121, 21);
             this.SiteNameTB.TabIndex = 13;
@@ -273,7 +280,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(479, 145);
+            this.label4.Location = new System.Drawing.Point(479, 165);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 12;
@@ -291,7 +298,7 @@
             "4 充电点",
             "5 交通管制点",
             "6 非交通管制点"});
-            this.SiteTypeCB.Location = new System.Drawing.Point(528, 142);
+            this.SiteTypeCB.Location = new System.Drawing.Point(528, 162);
             this.SiteTypeCB.Name = "SiteTypeCB";
             this.SiteTypeCB.Size = new System.Drawing.Size(121, 20);
             this.SiteTypeCB.TabIndex = 11;
@@ -304,7 +311,7 @@
             "0",
             "1",
             "2"});
-            this.SiteDirecationCB.Location = new System.Drawing.Point(528, 112);
+            this.SiteDirecationCB.Location = new System.Drawing.Point(528, 132);
             this.SiteDirecationCB.Name = "SiteDirecationCB";
             this.SiteDirecationCB.Size = new System.Drawing.Size(121, 20);
             this.SiteDirecationCB.TabIndex = 10;
@@ -312,7 +319,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(479, 115);
+            this.label3.Location = new System.Drawing.Point(479, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 9;
@@ -320,7 +327,7 @@
             // 
             // SiteRateTB
             // 
-            this.SiteRateTB.Location = new System.Drawing.Point(528, 78);
+            this.SiteRateTB.Location = new System.Drawing.Point(528, 98);
             this.SiteRateTB.Name = "SiteRateTB";
             this.SiteRateTB.Size = new System.Drawing.Size(121, 21);
             this.SiteRateTB.TabIndex = 8;
@@ -328,7 +335,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(477, 81);
+            this.label2.Location = new System.Drawing.Point(477, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 7;
@@ -337,7 +344,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(479, 49);
+            this.label1.Location = new System.Drawing.Point(479, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 6;
@@ -345,14 +352,14 @@
             // 
             // SiteIDTB
             // 
-            this.SiteIDTB.Location = new System.Drawing.Point(528, 46);
+            this.SiteIDTB.Location = new System.Drawing.Point(528, 66);
             this.SiteIDTB.Name = "SiteIDTB";
             this.SiteIDTB.Size = new System.Drawing.Size(121, 21);
             this.SiteIDTB.TabIndex = 5;
             // 
             // AddNewSiteBtn
             // 
-            this.AddNewSiteBtn.Location = new System.Drawing.Point(481, 15);
+            this.AddNewSiteBtn.Location = new System.Drawing.Point(481, 35);
             this.AddNewSiteBtn.Name = "AddNewSiteBtn";
             this.AddNewSiteBtn.Size = new System.Drawing.Size(75, 23);
             this.AddNewSiteBtn.TabIndex = 4;
@@ -373,8 +380,36 @@
             // MapTimer
             // 
             this.MapTimer.Enabled = true;
-            this.MapTimer.Interval = 1000;
+            this.MapTimer.Interval = 500;
             this.MapTimer.Tick += new System.EventHandler(this.MapTimer_Tick);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(316, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(101, 12);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "当前选择的线路：";
+            // 
+            // LineSelectedLab
+            // 
+            this.LineSelectedLab.AutoSize = true;
+            this.LineSelectedLab.Location = new System.Drawing.Point(412, 7);
+            this.LineSelectedLab.Name = "LineSelectedLab";
+            this.LineSelectedLab.Size = new System.Drawing.Size(11, 12);
+            this.LineSelectedLab.TabIndex = 32;
+            this.LineSelectedLab.Text = "*";
+            // 
+            // SaveToMapFileBtn
+            // 
+            this.SaveToMapFileBtn.Location = new System.Drawing.Point(878, 217);
+            this.SaveToMapFileBtn.Name = "SaveToMapFileBtn";
+            this.SaveToMapFileBtn.Size = new System.Drawing.Size(75, 23);
+            this.SaveToMapFileBtn.TabIndex = 33;
+            this.SaveToMapFileBtn.Text = "保存配置";
+            this.SaveToMapFileBtn.UseVisualStyleBackColor = true;
+            this.SaveToMapFileBtn.Click += new System.EventHandler(this.SaveToMapFileBtn_Click);
             // 
             // MapConfigForm
             // 
@@ -425,5 +460,8 @@
         private System.Windows.Forms.TextBox LineEndPxTB;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label LineSelectedLab;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button SaveToMapFileBtn;
     }
 }

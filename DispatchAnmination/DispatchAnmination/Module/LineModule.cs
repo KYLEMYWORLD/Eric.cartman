@@ -66,6 +66,16 @@ namespace DispatchAnmination
             }
         }
 
+        public LineData ToLineData()
+        {
+            LineData lineData = new LineData(_centerP.X,_centerP.Y,_endP.X,_endP.Y,0);
+            foreach(var site in _sitePos)
+            {
+                lineData.AddSite(new SiteData(site.ID,site._rate,site._direction,(int)site._type,site.Name,site.UpName));
+            }
+            return lineData;
+        }
+
         /// <summary>
         /// 添加站点
         /// </summary>
@@ -83,6 +93,17 @@ namespace DispatchAnmination
             int x = ((int)((double)rate /100 * (_endP.X - _centerP.X))+_centerP.X);
             int y = ((int)((double)rate /100 * (_endP.Y - _centerP.Y)) +_centerP.Y);
             return new Point(x, y);
+        }
+
+        /// <summary>
+        /// 坐标更新后站点的地标也要更新
+        /// </summary>
+        public void UpdateSiteP()
+        {
+            foreach(var site in _sitePos)
+            {
+                site._siteP = GetSiteP(site._rate);
+            }
         }
 
         /// <summary>
@@ -113,7 +134,7 @@ namespace DispatchAnmination
             }
         }
 
-        public override void update(Point centerPoint)
+        public override void Update(Point centerPoint)
         {
 
         }
@@ -131,42 +152,25 @@ namespace DispatchAnmination
         /// <summary>
         /// 站点位置
         /// </summary>
-        internal Point _siteP { get; }
+        internal Point _siteP { get; set; }
 
         /// <summary>
         /// 站点ID
         /// </summary>
-        private int _id;
         public int ID
         {
-            get
-            {
-                return _id;
-            }
+            set;get;
         }
 
         /// <summary>
         /// 站点名称
         /// </summary>
-        private String _name;
-        public String Name {
-            get
-            {
-                return _name;
-            }
-        }
+        public string Name {set;get;}
 
         /// <summary>
         /// 站点上方信息
         /// </summary>
-        private String _upName;
-        public String UpName
-        {
-            get
-            {
-                return _upName;
-            }
-        }
+        public string UpName{set;get;}
 
         public int _rate;
 
@@ -175,7 +179,7 @@ namespace DispatchAnmination
         public SitePos(int id, Point point, int direction, int rate,SiteType type, String name,String upName)
         {
             
-            _id = id;
+            ID = id;
 
             _siteP = point;
 
@@ -185,9 +189,9 @@ namespace DispatchAnmination
 
             _type = type;
 
-            _name = name;
+            Name = name;
 
-            _upName = upName;
+            UpName = upName;
         }
     }
 

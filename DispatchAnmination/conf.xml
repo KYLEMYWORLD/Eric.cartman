@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- New XML document created with EditiX XML Editor (http://www.editix.com) at Wed Oct 17 08:46:18 GMT+08:00 2018 -->
 <!DOCTYPE root[
   <!ELEMENT Config (Lines)>
@@ -10,56 +10,120 @@
   <!ELEMENT Site (#PCDATA)>
   <!ATTLIST Site id ID #REQUIRED >]>
 <Config>
-	<Lines id="lines">
-		<Line id="0" startx="1000" starty="200" endx="400" endy="200">
-			<Site id="23" rate="10" name="正负" upname="23号地标" direction="2" type="6"/>
-			<Site id="33" rate="30" name="正(33号站点)" upname="33号地标" direction="1" type="1"/>
-			<Site id="31" rate="55" name="负(31号站点)" upname="31号地标" direction="0"  type="3"/>
-			<Site id="15" rate="85" name="正" upname="15号地标" direction="1" type="5"/>
-			<Site id="13" rate="95" name="正(转弯点)" upname="13号地标" direction="1" type="2"/>
-		</Line>
-		<!--转弯到1号站点-开始-->
-		<Line id="0" startx="400" starty="200" endx="300" endy="300"></Line>
-		<Line id="0" startx="300" starty="300" endx="150" endy="300">
-			<Site id="21" rate="15" name="正负(转弯点)" upname="21号地标"  direction="2" type="2"/>
-			<Site id="11" rate="100" name="正(1号站点)" upname="11(装载点)"  direction="1" type="0"/>
-		</Line>
-		<Line id="0" startx="300" starty="300" endx="400" endy="400"/>
-		<Line id="0" startx="400" starty="400" endx="1000" endy="400">
-			<Site id="22" rate="6" name="正负" upname="22号地标"  direction="2" type="6"/>
-			<Site id="32" rate="30" name="负(32号站点)" upname="32号地标"  direction="0" type="1"/>
-			<Site id="34" rate="55" name="正(34号站点)" upname="34号地标"  direction="1" type="3"/>
-			<Site id="12" rate="68" name="负(转弯点)"  upname="12号地标"  direction="0" type="2"/>
-			<Site id="16" rate="95" name="负"  upname="16号地标" direction="0"  type="5"/>
-		</Line>
-		
-		
-		<!--转弯到4号站点-开始-->
-		<Line id="0" startx="1000" starty="400" endx="1100" endy="300"></Line>
-		<Line id="0" startx="1100" starty="300" endx="1250" endy="300">
-			<Site id="24" rate="15" name="正负(转弯点)" 	upname="24号地标" direction="2" type="2"/>
-			<Site id="14" rate="100" name="负(4号点)" upname="14(卸货点)" direction="1" type="0"/>
-		</Line>
-		<Line id="0" startx="1100" starty="300" endx="1000" endy="200"/>
-		
-		<!--51充电线路—开始-->
-		<Line id="0" startx="400" starty="200" endx="300" endy="100"></Line>
-		<Line id="0" startx="300" starty="100" endx="150" endy="100">
-			<Site id="51" rate="95" name="正(充电)" upname="51号地标" direction="1" type="4"/>
-		</Line>
-		<!--51充电线路—结束-->
-		<!--52充电线路—开始-->
-		<Line id="0" startx="1000" starty="400" endx="1100" endy="500"></Line>
-		<Line id="0" startx="1100" starty="500" endx="1250" endy="500">
-			<Site id="52" rate="95" name="负(充电)" upname="52号地标" direction="1" type="4"/>
-		</Line>
-		<!--52充电线路—结束-->
-	</Lines>
-	<LineMoveSize>
-		<Size id="23" value="10"/>
-		<Size id="15" value="10"/>
-		<Size id="34" value="10"/>
-		<Size id="14" value="10"/>
-		<Size id="13" value="10"/>
-	</LineMoveSize>
+  <Lines id="lines">
+    <Line id="0" startx="1000" starty="200" endx="400" endy="200">
+      <Site id="23" rate="10" name="正负" upname="23号地标" direction="2" type="6" />
+      <Site id="33" rate="30" name="正(33号站点)" upname="33号地标" direction="1" type="1" />
+      <Site id="31" rate="55" name="负(31号站点)" upname="31号地标" direction="0" type="3" />
+      <Site id="15" rate="85" name="正" upname="15号地标" direction="1" type="5" />
+      <Site id="13" rate="95" name="正(转弯点)" upname="13号地标" direction="1" type="2" />
+    </Line>
+    <!--转弯到1号站点-开始-->
+    <Line id="0" startx="400" starty="200" endx="300" endy="300">
+    </Line>
+    <Line id="0" startx="300" starty="300" endx="150" endy="300">
+      <Site id="21" rate="15" name="正负(转弯点)" upname="21号地标" direction="2" type="2" />
+      <Site id="11" rate="100" name="正(1号站点)" upname="11(装载点)" direction="1" type="0" />
+    </Line>
+    <Line id="0" startx="300" starty="300" endx="400" endy="400" />
+    <Line id="0" startx="400" starty="400" endx="1000" endy="400">
+      <Site id="22" rate="6" name="正负" upname="22号地标" direction="2" type="6" />
+      <Site id="32" rate="30" name="负(32号站点)" upname="32号地标" direction="0" type="1" />
+      <Site id="34" rate="55" name="正(34号站点)" upname="34号地标" direction="1" type="3" />
+      <Site id="12" rate="68" name="负(转弯点)" upname="12号地标" direction="0" type="2" />
+      <Site id="16" rate="95" name="负" upname="16号地标" direction="0" type="5" />
+    </Line>
+    <!--转弯到4号站点-开始-->
+    <Line id="0" startx="1000" starty="400" endx="1100" endy="300">
+    </Line>
+    <Line id="0" startx="1100" starty="300" endx="1250" endy="300">
+      <Site id="24" rate="15" name="正负(转弯点)" upname="24号地标" direction="2" type="2" />
+      <Site id="14" rate="100" name="负(4号点)" upname="14(卸货点)" direction="1" type="0" />
+    </Line>
+    <Line id="0" startx="1100" starty="300" endx="1000" endy="200" />
+    <!--51充电线路—开始-->
+    <Line id="0" startx="400" starty="200" endx="300" endy="100">
+    </Line>
+    <Line id="0" startx="300" starty="100" endx="150" endy="100">
+      <Site id="51" rate="95" name="正(充电)" upname="51号地标" direction="1" type="4" />
+    </Line>
+    <!--51充电线路—结束-->
+    <!--52充电线路—开始-->
+    <Line id="0" startx="1000" starty="400" endx="1100" endy="500">
+    </Line>
+    <Line id="0" startx="1100" starty="500" endx="1250" endy="500">
+      <Site id="52" rate="95" name="负(充电)" upname="52号地标" direction="1" type="4" />
+    </Line>
+    <!--52充电线路—结束-->
+  </Lines>
+  <LineMoveSize>
+    <Size id="23" value="10" />
+    <Size id="15" value="10" />
+    <Size id="34" value="10" />
+    <Size id="14" value="10" />
+    <Size id="13" value="10" />
+  </LineMoveSize>
+  <AgvLines>
+    <AgvLine nowsite="23" isspecial="1" dessite="32">
+      <Point x="940" y="200" />
+      <Point x="820" y="200" />
+    </AgvLine>
+    <AgvLine nowsite="33" isspecial="0" dessite="33">
+      <Point x="820" y="200" />
+      <Point x="490" y="200" />
+    </AgvLine>
+    <AgvLine nowsite="15" isspecial="1" dessite="52">
+      <Point x="490" y="200" />
+      <Point x="430" y="200" />
+    </AgvLine>
+    <AgvLine nowsite="13" isspecial="0" dessite="0">
+      <Point x="430" y="200" />
+      <Point x="400" y="200" />
+      <Point x="300" y="300" />
+      <Point x="278" y="300" />
+    </AgvLine>
+    <AgvLine nowsite="21" isspecial="0" dessite="0">
+      <Point x="278" y="300" />
+      <Point x="150" y="300" />
+    </AgvLine>
+    <AgvLine nowsite="11" isspecial="1" dessite="52">
+      <Point x="150" y="300" />
+      <Point x="300" y="300" />
+      <Point x="400" y="400" />
+      <Point x="436" y="400" />
+    </AgvLine>
+    <AgvLine nowsite="22" isspecial="0" dessite="0">
+      <Point x="436" y="400" />
+      <Point x="730" y="400" />
+    </AgvLine>
+    <AgvLine nowsite="34" isspecial="0" dessite="0">
+      <Point x="730" y="400" />
+      <Point x="1000" y="400" />
+      <Point x="1100" y="300" />
+      <Point x="1122" y="300" />
+    </AgvLine>
+    <AgvLine nowsite="24" isspecial="1" dessite="33">
+      <Point x="1122" y="300" />
+      <Point x="1250" y="300" />
+    </AgvLine>
+    <AgvLine nowsite="14" isspecial="0" dessite="0">
+      <Point x="1250" y="300" />
+      <Point x="1100" y="300" />
+      <Point x="1000" y="200" />
+      <Point x="400" y="200" />
+      <Point x="300" y="100" />
+      <Point x="158" y="100" />
+    </AgvLine>
+    <AgvLine nowsite="51" isspecial="0" dessite="0">
+      <Point x="158" y="100" />
+      <Point x="1000" y="400" />
+      <Point x="1100" y="500" />
+      <Point x="1242" y="500" />
+    </AgvLine>
+    <AgvLine nowsite="52" isspecial="0" dessite="0">
+      <Point x="1242" y="500" />
+      <Point x="940" y="200" />
+    </AgvLine>
+  </AgvLines>
+  <AgvLines id="agvlines" />
 </Config>

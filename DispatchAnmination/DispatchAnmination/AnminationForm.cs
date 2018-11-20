@@ -54,16 +54,18 @@ namespace DispatchAnmination
         private void AnminateTimer_Tick(object sender, EventArgs e)
         {
             point = Control.MousePosition;
-            anminationPicBox.Invalidate();
+            
             AgvSiteMaster.UpDateAgv("AGV001");
             AgvSiteMaster.UpDateAgv("AGV002");
             AgvSiteMaster.UpDateAgv("AGV003");
             AgvSiteMaster.UpDateAgv("AGV004");
+
+            anminationPicBox.Invalidate();
         }
 
         private void LinePosNegBtn_Click(object sender, EventArgs e)
         {
-            LineInfoForm.newInstance().Show();
+            LineInfoForm.NewInstance().Show();
         }
 
         private void DisplaySetBtn_Click(object sender, EventArgs e)

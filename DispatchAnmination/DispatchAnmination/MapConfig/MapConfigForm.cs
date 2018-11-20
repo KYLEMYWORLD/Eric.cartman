@@ -15,15 +15,33 @@ namespace DispatchAnmination.MapConfig
         public MapConfigForm()
         {
             InitializeComponent();
-            LineListView.Columns.Add("Index", 20, HorizontalAlignment.Center);
-            LineListView.Columns.Add("SX", 80, HorizontalAlignment.Center);
-            LineListView.Columns.Add("SY", 80, HorizontalAlignment.Center);
-            LineListView.Columns.Add("EX", 80, HorizontalAlignment.Center);
-            LineListView.Columns.Add("EY", 80, HorizontalAlignment.Center);
+            LineListView.Columns.Add("Index", 60, HorizontalAlignment.Center);
+            LineListView.Columns.Add("SX", 40, HorizontalAlignment.Center);
+            LineListView.Columns.Add("SY", 40, HorizontalAlignment.Center);
+            LineListView.Columns.Add("EX", 40, HorizontalAlignment.Center);
+            LineListView.Columns.Add("EY", 40, HorizontalAlignment.Center);
 
-            LineSiteListView.Columns.Add("ID", 80, HorizontalAlignment.Center);
-            LineSiteListView.Columns.Add("Rate", 80, HorizontalAlignment.Center);
+            LineSiteListView.Columns.Add("ID", 60, HorizontalAlignment.Center);
+            LineSiteListView.Columns.Add("Rate", 60, HorizontalAlignment.Center);
+
+
+
+            XmlInit();
         }
+        private XmlAnalyze xmlAnalyze;
+
+        private void XmlInit()
+        {
+            xmlAnalyze = new XmlAnalyze();
+            xmlAnalyze.DoAnalyze("mapconf.xml");
+            foreach(var lineDate in xmlAnalyze._lineDatas)
+            {
+                _lineModule.Add(new LineModule(lineDate));
+            }
+            LineListViewRefresh();
+            LineSiteListViewRefresh();
+        }
+
         private static MapConfigForm _form;
         public static MapConfigForm NewInstance()
         {
@@ -34,8 +52,7 @@ namespace DispatchAnmination.MapConfig
             return _form;
         }
 
-        private bool IsNewLine = false, IsNewSite = false;
-        private Point SiteP;
+        private bool IsNewLine = false;
         private Point LineStartP, LineEndP;
 
         private List<LineModule> _lineModule = new List<LineModule>();
@@ -98,6 +115,7 @@ namespace DispatchAnmination.MapConfig
         LineModule module;
         private void LineListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             LineSelectedIndex = LineListView.FocusedItem.Index;
             module = _lineModule[LineSelectedIndex];
             LineStartPxTB.Text = module._centerP.X + "";
@@ -106,8 +124,14 @@ namespace DispatchAnmination.MapConfig
             LineEndPyTB.Text = module._endP.Y + "";
 
             LineSiteListViewRefresh();
+            LineSelectedLab.Text = LineSelectedIndex + "";
         }
 
+        /// <summary>
+        /// 定时任务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MapTimer_Tick(object sender, EventArgs e)
         {
             MapTimer.Enabled = false;
@@ -115,6 +139,9 @@ namespace DispatchAnmination.MapConfig
             MapTimer.Enabled = true;
         }
 
+        /// <summary>
+        /// 更新线路列表
+        /// </summary>
         private void LineListViewRefresh()
         {
             LineListView.Items.Clear();
@@ -139,6 +166,11 @@ namespace DispatchAnmination.MapConfig
             ClearLine();
         }
 
+        /// <summary>
+        /// 站点选择更改触发方法
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LineSiteListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             SitePos site = _lineModule[LineSelectedIndex].SitePos[LineSiteListView.FocusedItem.Index];
@@ -149,30 +181,55 @@ namespace DispatchAnmination.MapConfig
             SiteDirecationCB.SelectedIndex = site._direction;
             SiteTypeCB.SelectedIndex = (int)site._type;
         }
+        /// <summary>
+        /// 当前选择的线路
+        /// </summary>
+        private int LineSelectedIndex = -1;
 
-        private int LineSelectedIndex = 0;
-
+        /// <summary>
+        /// 修改线路
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditLineBtn_Click(object sender, EventArgs e)
         {
+            if (LineSelectedIndex == -1)
+            {
+                MessageBox.Show("请选择线路！");
+                return;
+            }
             _lineModule[LineSelectedIndex]._centerP.X = int.Parse(LineStartPxTB.Text);
             _lineModule[LineSelectedIndex]._centerP.Y = int.Parse(LineStartPyTB.Text);
             _lineModule[LineSelectedIndex]._endP.X = int.Parse(LineEndPxTB.Text);
             _lineModule[LineSelectedIndex]._endP.Y = int.Parse(LineEndPyTB.Text);
-
+            _lineModule[LineSelectedIndex].UpdateSiteP();
         }
 
+        /// <summary>
+        /// 删除线路
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteLineBtn_Click(object sender, EventArgs e)
         {
+            if (LineSelectedIndex == -1)
+            {
+                MessageBox.Show("请选择线路！");
+                return;
+            }
             _lineModule.RemoveAt(LineSelectedIndex);
             LineSelectedIndex = -1;
             LineListViewRefresh();
             ClearLine();
         }
 
+        /// <summary>
+        /// 站点列表刷新
+        /// </summary>
         private void LineSiteListViewRefresh()
         {
             LineSiteListView.Items.Clear();
-            if (_lineModule.Count < LineSelectedIndex)
+            if (_lineModule.Count < LineSelectedIndex || LineSelectedIndex==-1)
             {
                 return;
             }
@@ -188,6 +245,46 @@ namespace DispatchAnmination.MapConfig
             ClearLineSite();
         }
 
+        private void SaveToMapFileBtn_Click(object sender, EventArgs e)
+        {
+            List<LineData> lineDatas = new List<LineData>();
+            foreach(var line in _lineModule)
+            {
+                lineDatas.Add(line.ToLineData());
+            }
+            xmlAnalyze.SaveLineToFile(lineDatas);
+            xmlAnalyze.SaveMapConfigFile();
+        }
+
+        private void EditLineSiteBtn_Click(object sender, EventArgs e)
+        {
+            if (LineSelectedIndex == -1)
+            {
+                MessageBox.Show("请选择线路！");
+                return;
+            }
+            else if (SiteIDTB.Text.Length == 0 || SiteRateTB.Text.Length == 0 ||
+              SiteTypeCB.SelectedIndex == -1 || SiteDirecationCB.SelectedIndex == -1)
+            {
+                MessageBox.Show("请先填写和选择站点信息");
+                return;
+            }
+            _lineModule[LineSelectedIndex].SitePos[LineSiteListView.FocusedItem.Index].ID = int.Parse(SiteIDTB.Text);
+            _lineModule[LineSelectedIndex].SitePos[LineSiteListView.FocusedItem.Index]._rate = int.Parse(SiteRateTB.Text);
+            _lineModule[LineSelectedIndex].SitePos[LineSiteListView.FocusedItem.Index]._direction = SiteDirecationCB.SelectedIndex;
+            _lineModule[LineSelectedIndex].SitePos[LineSiteListView.FocusedItem.Index]._type = (SiteType)SiteTypeCB.SelectedIndex;
+            _lineModule[LineSelectedIndex].SitePos[LineSiteListView.FocusedItem.Index].Name = SiteNameTB.Text;
+            _lineModule[LineSelectedIndex].SitePos[LineSiteListView.FocusedItem.Index].UpName = SiteUpNameTB.Text;
+
+
+                //.AddSitePos(int.Parse(SiteIDTB.Text), int.Parse(SiteRateTB.Text),
+                //SiteDirecationCB.SelectedIndex, (SiteType)SiteTypeCB.SelectedIndex, SiteNameTB.Text, SiteUpNameTB.Text);
+            LineSiteListViewRefresh();
+        }
+
+        /// <summary>
+        /// 清空线路输入框
+        /// </summary>
         private void ClearLineSite()
         {
             SiteIDTB.Text = "";
@@ -198,6 +295,9 @@ namespace DispatchAnmination.MapConfig
             SiteTypeCB.SelectedIndex =0;
         }
 
+        /// <summary>
+        /// 清空站点输入框
+        /// </summary>
         private void ClearLine()
         {
             LineStartPxTB.Text = "";
