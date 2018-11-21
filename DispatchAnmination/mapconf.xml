@@ -1,8 +1,189 @@
 <?xml version="1.0" encoding="gb2312"?>
+<!-- New XML document created with EditiX XML Editor (http://www.editix.com) at Wed Oct 17 08:46:18 GMT+08:00 2018 -->
+<!DOCTYPE root[
+  <!ELEMENT Config (Lines)>
+  <!ELEMENT Lines (Line*)>
+  <!ATTLIST Lines id ID #REQUIRED >
+  <!ELEMENT Line (Site*)>
+  <!ATTLIST Line id ID #REQUIRED >
+  <!ELEMENT Line (#PCDATA)>
+  <!ELEMENT Site (#PCDATA)>
+  <!ATTLIST Site id ID #REQUIRED >]>
 <Config>
-  <Lines id="lines">
-    <Line startx="172" starty="152" endx="782" endy="264" id="0">
-      <Site id="2" name="22" upname="22" rate="3" direction="2" type="4" />
+  <Lines>
+    <Line startx="900" starty="150" endx="1000" endy="100" id="0" />
+    <Line startx="1000" starty="100" endx="1100" endy="100" id="0">
+      <Site id="53" name="反" upname="窑头前充电点53" rate="100" direction="1" type="4" />
     </Line>
+    <Line startx="900" starty="150" endx="1000" endy="200" id="0" />
+    <Line startx="1000" starty="200" endx="1100" endy="200" id="0">
+      <Site id="24" name="全" upname="24" rate="10" direction="1" type="2" />
+      <Site id="14" name="反" upname="14(4号)窑头" rate="100" direction="1" type="0" />
+    </Line>
+    <Line startx="1000" starty="200" endx="900" endy="250" id="0" />
+    <Line startx="900" starty="250" endx="1000" endy="300" id="0" />
+    <Line startx="1000" starty="300" endx="1100" endy="300" id="0">
+      <Site id="55" name="反" upname="窑头后充电点55" rate="100" direction="0" type="4" />
+    </Line>
+    <Line startx="900" starty="250" endx="350" endy="250" id="0">
+      <Site id="25" name="反" upname="25" rate="2" direction="1" type="2" />
+      <Site id="15" name="正" upname="15" rate="5" direction="1" type="7" />
+      <Site id="62" name="正" upname="65" rate="10" direction="1" type="3" />
+      <Site id="45" name="全" upname="45" rate="15" direction="1" type="8" />
+      <Site id="33" name="正" upname="33" rate="85" direction="1" type="1" />
+      <Site id="34" name="反" upname="34" rate="90" direction="1" type="3" />
+      <Site id="46" name="全" upname="46" rate="95" direction="1" type="8" />
+      <Site id="26" name="正" upname="26" rate="98" direction="1" type="2" />
+    </Line>
+    <Line startx="350" starty="250" endx="250" endy="300" id="0" />
+    <Line startx="250" starty="300" endx="150" endy="300" id="0">
+      <Site id="56" name="正" upname="窑尾前充电点56" rate="100" direction="1" type="4" />
+    </Line>
+    <Line startx="350" starty="250" endx="250" endy="200" id="0" />
+    <Line startx="250" starty="200" endx="150" endy="200" id="0">
+      <Site id="21" name="全" upname="21" rate="10" direction="1" type="2" />
+      <Site id="11" name="正" upname="11(1号)窑尾" rate="100" direction="1" type="0" />
+    </Line>
+    <Line startx="150" starty="100" endx="250" endy="100" id="0">
+      <Site id="52" name="正" upname="窑尾后充电点52" rate="0" direction="1" type="4" />
+    </Line>
+    <Line startx="250" starty="100" endx="350" endy="150" id="0" />
+    <Line startx="350" starty="150" endx="900" endy="150" id="0">
+      <Site id="22" name="正" upname="22" rate="2" direction="1" type="2" />
+      <Site id="12" name="反" upname="12" rate="5" direction="1" type="7" />
+      <Site id="62" name="反" upname="62" rate="10" direction="1" type="3" />
+      <Site id="42" name="全" upname="42" rate="15" direction="1" type="8" />
+      <Site id="31" name="反" upname="31" rate="85" direction="1" type="1" />
+      <Site id="32" name="正" upname="32" rate="90" direction="1" type="3" />
+      <Site id="43" name="全" upname="43" rate="95" direction="1" type="8" />
+      <Site id="23" name="反" upname="23" rate="98" direction="1" type="2" />
+    </Line>
+    <Line startx="250" starty="200" endx="350" endy="150" id="0" />
   </Lines>
+  <AgvLines>
+    <AgvLine nowsite="53" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="1100" y="100" />
+      <Point x="1000" y="200" />
+      <Point x="1010" y="200" />
+      <Point x="900" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="24" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="1010" y="200" />
+      <Point x="1100" y="200" />
+    </AgvLine>
+    <AgvLine nowsite="14" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="1100" y="200" />
+      <Point x="1000" y="200" />
+      <Point x="900" y="250" />
+      <Point x="900" y="250" />
+      <Point x="1000" y="300" />
+      <Point x="889" y="250" />
+    </AgvLine>
+    <AgvLine nowsite="25" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="889" y="250" />
+      <Point x="873" y="250" />
+    </AgvLine>
+    <AgvLine nowsite="15" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="873" y="250" />
+      <Point x="845" y="250" />
+    </AgvLine>
+    <AgvLine nowsite="62" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="845" y="250" />
+      <Point x="818" y="250" />
+    </AgvLine>
+    <AgvLine nowsite="45" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="818" y="250" />
+      <Point x="433" y="250" />
+    </AgvLine>
+    <AgvLine nowsite="33" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="433" y="250" />
+      <Point x="405" y="250" />
+    </AgvLine>
+    <AgvLine nowsite="34" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="405" y="250" />
+      <Point x="378" y="250" />
+    </AgvLine>
+    <AgvLine nowsite="46" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="378" y="250" />
+      <Point x="361" y="250" />
+    </AgvLine>
+    <AgvLine nowsite="26" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="361" y="250" />
+      <Point x="350" y="250" />
+      <Point x="250" y="300" />
+      <Point x="150" y="300" />
+    </AgvLine>
+    <AgvLine nowsite="56" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="150" y="300" />
+      <Point x="350" y="250" />
+      <Point x="250" y="200" />
+      <Point x="240" y="200" />
+    </AgvLine>
+    <AgvLine nowsite="21" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="240" y="200" />
+      <Point x="150" y="200" />
+    </AgvLine>
+    <AgvLine nowsite="11" isspecial="1" dessite="1" movesize="0.1">
+      <Point x="150" y="200" />
+      <Point x="240" y="200" />
+      <Point x="350" y="150" />
+      <Point x="377" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="52" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="150" y="100" />
+      <Point x="250" y="100" />
+      <Point x="350" y="150" />
+      <Point x="361" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="22" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="361" y="150" />
+      <Point x="377" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="12" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="377" y="150" />
+      <Point x="405" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="62" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="405" y="150" />
+      <Point x="432" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="42" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="432" y="150" />
+      <Point x="817" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="31" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="817" y="150" />
+      <Point x="845" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="32" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="845" y="150" />
+      <Point x="872" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="43" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="872" y="150" />
+      <Point x="889" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="23" isspecial="0" dessite="0" movesize="0.1">
+      <Point x="889" y="150" />
+      <Point x="250" y="200" />
+      <Point x="350" y="150" />
+    </AgvLine>
+    <AgvLine nowsite="11" isspecial="1" dessite="52" movesize="0.1">
+      <Point x="150" y="200" />
+      <Point x="240" y="200" />
+    </AgvLine>
+  </AgvLines>
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
+  <AgvLines id="agvlines" />
 </Config>
