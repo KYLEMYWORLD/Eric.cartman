@@ -68,5 +68,14 @@ namespace DispatchAnmination.Const
         /// </summary>
         public static bool IsShow_NotTrafficSite = true;
 
+        /// <summary>
+        /// 是否展示完成点
+        /// </summary>
+        public static bool IsShow_FinishSite = true;
+
+        /// <summary>
+        /// 是否展示加减速点
+        /// </summary>
+        public static bool IsShow_IncreSite = true;
     }
 }

@@ -21,29 +21,9 @@ namespace DispatchAnmination
 
         internal static List<LineModule> _lineModules= new List<LineModule>();
 
-        private static MPoint point;
+        
 
-
-        /// <summary>
-        /// 更新AGV当前所在位置
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="siteid"></param>
-        /// <param name="rate"></param>
-        public static void UpdateAgvSite(string name, int siteid, float rate)
-        {
-            AgvModule agv = _agvModules.Find(c => { return c._name.Equals(name); });
-           
-            if (agv != null)
-            {
-                point = LineDateCenter.GetMPointOnLine(siteid, rate);
-                if(point != null)
-                {
-                    agv.Update(new Point(point.X, point.Y));
-                }
-            }
-        }
-
+        private static AgvPoint agvPoint;
         /// <summary>
         /// 新更新AGV坐标方法方法
         /// </summary>
@@ -51,7 +31,43 @@ namespace DispatchAnmination
         /// <param name="siteid"></param>
         /// <param name="rate"></param>
         /// <param name="dessite"></param>
-        public static void UpdateAgvSiteNew(string name, int siteid, float rate, int dessite)
+        public static void UpdateAgvSiteNew(string name, int siteid, int dessite = 0, float rate =-1)
+        {
+            AgvModule agv = _agvModules.Find(c => { return c._name.Equals(name); });
+
+            if (agv != null)
+            {
+                agvPoint = AgvLineMaster.GetMPointOnLine(name,siteid, dessite, rate);
+                if (agvPoint != null)
+                {
+                    agv.Update(new Point(agvPoint.X, agvPoint.Y));
+                }
+            }
+        }
+
+        /// <summary>
+        /// AGV添加到地图的新方法
+        /// </summary>
+        /// <param name="agvname"></param>
+        /// <param name="site"></param>
+        /// <param name="rate"></param>
+        public static void AddAgvToModuleNew(string agvname,int site = 23,int dessite=0,  float rate = 0)
+        {
+            AgvPoint p = AgvLineMaster.GetMPointOnLine(agvname,site, dessite, rate);
+            if (p != null)
+            {
+                _agvModules.Add(new AgvModule(agvname, new Point(p.X, p.Y), site));
+            }
+        }
+
+        private static MPoint point;
+        /// <summary>
+        /// 更新AGV当前所在位置
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="siteid"></param>
+        /// <param name="rate"></param>
+        public static void UpdateAgvSite(string name, int siteid, float rate)
         {
             AgvModule agv = _agvModules.Find(c => { return c._name.Equals(name); });
 
@@ -65,6 +81,12 @@ namespace DispatchAnmination
             }
         }
 
+        /// <summary>
+        /// 添加AGV到地图上
+        /// </summary>
+        /// <param name="agvname"></param>
+        /// <param name="site"></param>
+        /// <param name="rate"></param>
         public static void AddAgvToModule(string agvname,int site = 23, float rate = 0)
         {
             MPoint p = LineDateCenter.GetMPointOnLine(site, rate);
@@ -81,6 +103,7 @@ namespace DispatchAnmination
         /// <param name="lineDatas"></param>
         public static void AddLinesToModule(List<LineData> lineDatas)
         {
+            _lineModules.Clear();
             foreach (LineData data in lineDatas)
             {
                 _lineModules.Add(new LineModule(data));
@@ -111,7 +134,7 @@ namespace DispatchAnmination
         /// <summary>
         /// 默认尺寸
         /// </summary>
-        internal int _size = 20;
+        internal int _size = 10;
 
         /// <summary>
         /// 文字描述点
@@ -124,6 +147,7 @@ namespace DispatchAnmination
         internal Pen _pen = new Pen(new SolidBrush(Color.Black));
 
         internal Brush _brush = new SolidBrush(Color.Black);
+        internal Brush _orageBrush = new SolidBrush(Color.OrangeRed);
         internal Brush _brushRed = new SolidBrush(Color.OrangeRed);
 
         internal Font _font = new Font("宋体", 10);

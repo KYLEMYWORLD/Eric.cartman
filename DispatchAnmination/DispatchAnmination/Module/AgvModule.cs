@@ -16,12 +16,14 @@ namespace DispatchAnmination
         /// <summary>
         /// AGV的线条
         /// </summary>
-        private Point[] _lines;
+        //private Point[] _lines;
 
         /// <summary>
         /// AGV的左右轮子
         /// </summary>
         private Rectangle[] _rectangle;
+
+        private Rectangle _agvtangle;
 
         /// <summary>
         /// 当前站点
@@ -39,7 +41,12 @@ namespace DispatchAnmination
 
             _pen = new Pen(new SolidBrush(Color.Black));
 
-            _lines = new Point[5];
+            //_lines = new Point[5];
+            _agvtangle = new Rectangle {
+            X = _centerP.X,
+            Y   = _centerP.Y,
+            Width = site,
+            Height = site};
 
             _rectangle = new Rectangle[2];
 
@@ -54,24 +61,29 @@ namespace DispatchAnmination
         public override void Update(Point centerPoint)
         {
             _centerP = centerPoint;
-            //左上点
-            _lines[0].X = _centerP.X - _size * _scale;
-            _lines[0].Y = _centerP.Y - _size * _scale;
+            ////左上点
+            //_lines[0].X = _centerP.X - _size * _scale;
+            //_lines[0].Y = _centerP.Y - _size * _scale;
 
-            //左下点
-            _lines[1].X = _centerP.X - _size * _scale;
-            _lines[1].Y = _centerP.Y + _size * _scale;
+            ////左下点
+            //_lines[1].X = _centerP.X - _size * _scale;
+            //_lines[1].Y = _centerP.Y + _size * _scale;
 
-            //右下点
-            _lines[2].X = _centerP.X + _size * _scale;
-            _lines[2].Y = _centerP.Y + _size * _scale;
+            ////右下点
+            //_lines[2].X = _centerP.X + _size * _scale;
+            //_lines[2].Y = _centerP.Y + _size * _scale;
 
-            //右上点
-            _lines[3].X = _centerP.X + _size * _scale;
-            _lines[3].Y = _centerP.Y - _size * _scale;
+            ////右上点
+            //_lines[3].X = _centerP.X + _size * _scale;
+            //_lines[3].Y = _centerP.Y - _size * _scale;
 
-            //左上点
-            _lines[4] = _lines[0];
+            ////左上点
+            //_lines[4] = _lines[0];
+
+            _agvtangle.X = _centerP.X - _size * _scale;
+            _agvtangle.Y = _centerP.Y - _size * _scale;
+            _agvtangle.Width = _size * _scale * 2;
+            _agvtangle.Height = _size * _scale * 2;
 
 
             //左轮子
@@ -97,11 +109,12 @@ namespace DispatchAnmination
         /// <param name="g"></param>
         public override void Draw(Graphics g)
         {
-            g.DrawLines(_pen, _lines);
-
-            g.DrawEllipse(_pen, _rectangle[0]);
-
-            g.DrawEllipse(_pen, _rectangle[1]);
+            //g.DrawLines(_pen, _lines);
+            g.DrawRectangle(_pen, _agvtangle);
+            //g.DrawEllipse(_pen, _rectangle[0]);
+            //g.DrawEllipse(_pen, _rectangle[1]);
+            g.FillEllipse(_orageBrush, _rectangle[0]);
+            g.FillEllipse(_orageBrush, _rectangle[1]);
 
             g.DrawString(_name, _font, Brushes.Black, _describP);
         }

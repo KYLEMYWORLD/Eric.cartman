@@ -45,6 +45,8 @@ namespace DispatchAnmination
         /// </summary>
         public static void AddLineData()
         {
+            _linesPositive.Clear();
+            _linesNagetivie.Clear();
             foreach(LineModule lineM in ModuleControl._lineModules)
             {
                 //有站点
@@ -117,7 +119,7 @@ namespace DispatchAnmination
 
             //处理第一个点和最后一个点连起来
             //if (FirstP != null) _linesPositive[_linesPositive.Count() - 1].AddPoint(FirstP);
-            if (SecconP != null) _linesPositive[_linesPositive.Count() - 1].AddPoint(SecconP);
+            //if (SecconP != null) _linesPositive[_linesPositive.Count() - 1].AddPoint(SecconP);
         }
     }
 }

@@ -94,5 +94,15 @@ namespace DispatchAnmination.Config
         {
             ConstBA.IsShow_NotTrafficSite = IsShowNotTrafficSiteCB.Checked;
         }
+
+        private void IsShowSiteFinishCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ConstBA.IsShow_FinishSite = IsShowSiteFinishCB.Checked;
+        }
+
+        private void IsShowIncreCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ConstBA.IsShow_IncreSite = IsShowIncreCB.Checked;
+        }
     }
 }

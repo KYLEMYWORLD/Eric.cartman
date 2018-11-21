@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.MapConfigPB = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SaveToMapFileBtn = new System.Windows.Forms.Button();
+            this.LineSelectedLab = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.LineEndPyTB = new System.Windows.Forms.TextBox();
             this.LineEndPxTB = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -60,9 +63,6 @@
             this.AddNewSiteBtn = new System.Windows.Forms.Button();
             this.AddNewLineBtn = new System.Windows.Forms.Button();
             this.MapTimer = new System.Windows.Forms.Timer(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.LineSelectedLab = new System.Windows.Forms.Label();
-            this.SaveToMapFileBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MapConfigPB)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -119,12 +119,41 @@
             this.panel1.Size = new System.Drawing.Size(965, 257);
             this.panel1.TabIndex = 2;
             // 
+            // SaveToMapFileBtn
+            // 
+            this.SaveToMapFileBtn.Location = new System.Drawing.Point(878, 217);
+            this.SaveToMapFileBtn.Name = "SaveToMapFileBtn";
+            this.SaveToMapFileBtn.Size = new System.Drawing.Size(75, 23);
+            this.SaveToMapFileBtn.TabIndex = 33;
+            this.SaveToMapFileBtn.Text = "保存配置";
+            this.SaveToMapFileBtn.UseVisualStyleBackColor = true;
+            this.SaveToMapFileBtn.Click += new System.EventHandler(this.SaveToMapFileBtn_Click);
+            // 
+            // LineSelectedLab
+            // 
+            this.LineSelectedLab.AutoSize = true;
+            this.LineSelectedLab.Location = new System.Drawing.Point(412, 7);
+            this.LineSelectedLab.Name = "LineSelectedLab";
+            this.LineSelectedLab.Size = new System.Drawing.Size(11, 12);
+            this.LineSelectedLab.TabIndex = 32;
+            this.LineSelectedLab.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(316, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(101, 12);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "当前选择的线路：";
+            // 
             // LineEndPyTB
             // 
             this.LineEndPyTB.Location = new System.Drawing.Point(337, 232);
             this.LineEndPyTB.Name = "LineEndPyTB";
             this.LineEndPyTB.Size = new System.Drawing.Size(100, 21);
             this.LineEndPyTB.TabIndex = 30;
+            this.LineEndPyTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LineNumberInput_KeyPress);
             // 
             // LineEndPxTB
             // 
@@ -132,6 +161,7 @@
             this.LineEndPxTB.Name = "LineEndPxTB";
             this.LineEndPxTB.Size = new System.Drawing.Size(100, 21);
             this.LineEndPxTB.TabIndex = 29;
+            this.LineEndPxTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LineNumberInput_KeyPress);
             // 
             // label10
             // 
@@ -157,6 +187,7 @@
             this.LineStartPyTB.Name = "LineStartPyTB";
             this.LineStartPyTB.Size = new System.Drawing.Size(100, 21);
             this.LineStartPyTB.TabIndex = 26;
+            this.LineStartPyTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LineNumberInput_KeyPress);
             // 
             // LineStartPxTB
             // 
@@ -164,6 +195,7 @@
             this.LineStartPxTB.Name = "LineStartPxTB";
             this.LineStartPxTB.Size = new System.Drawing.Size(100, 21);
             this.LineStartPxTB.TabIndex = 25;
+            this.LineStartPxTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LineNumberInput_KeyPress);
             // 
             // label8
             // 
@@ -297,7 +329,9 @@
             "3 掉头点",
             "4 充电点",
             "5 交通管制点",
-            "6 非交通管制点"});
+            "6 非交通管制点",
+            "7 完成点",
+            "8 加速点"});
             this.SiteTypeCB.Location = new System.Drawing.Point(528, 162);
             this.SiteTypeCB.Name = "SiteTypeCB";
             this.SiteTypeCB.Size = new System.Drawing.Size(121, 20);
@@ -356,6 +390,7 @@
             this.SiteIDTB.Name = "SiteIDTB";
             this.SiteIDTB.Size = new System.Drawing.Size(121, 21);
             this.SiteIDTB.TabIndex = 5;
+            this.SiteIDTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LineNumberInput_KeyPress);
             // 
             // AddNewSiteBtn
             // 
@@ -382,34 +417,6 @@
             this.MapTimer.Enabled = true;
             this.MapTimer.Interval = 500;
             this.MapTimer.Tick += new System.EventHandler(this.MapTimer_Tick);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(316, 7);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(101, 12);
-            this.label11.TabIndex = 31;
-            this.label11.Text = "当前选择的线路：";
-            // 
-            // LineSelectedLab
-            // 
-            this.LineSelectedLab.AutoSize = true;
-            this.LineSelectedLab.Location = new System.Drawing.Point(412, 7);
-            this.LineSelectedLab.Name = "LineSelectedLab";
-            this.LineSelectedLab.Size = new System.Drawing.Size(11, 12);
-            this.LineSelectedLab.TabIndex = 32;
-            this.LineSelectedLab.Text = "*";
-            // 
-            // SaveToMapFileBtn
-            // 
-            this.SaveToMapFileBtn.Location = new System.Drawing.Point(878, 217);
-            this.SaveToMapFileBtn.Name = "SaveToMapFileBtn";
-            this.SaveToMapFileBtn.Size = new System.Drawing.Size(75, 23);
-            this.SaveToMapFileBtn.TabIndex = 33;
-            this.SaveToMapFileBtn.Text = "保存配置";
-            this.SaveToMapFileBtn.UseVisualStyleBackColor = true;
-            this.SaveToMapFileBtn.Click += new System.EventHandler(this.SaveToMapFileBtn_Click);
             // 
             // MapConfigForm
             // 

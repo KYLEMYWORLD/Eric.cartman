@@ -10,7 +10,9 @@ namespace XMLHelper
         public int NowSite;
         public bool IsSpecial;
         public int DesSite;
+        public float MoveSize;
         public List<AgvPoint> Points = new List<AgvPoint>();
+        public List<AgvRate> AgvRates = new List<AgvRate>();
 
         public int Lenght { set; get; }
         
@@ -19,7 +21,7 @@ namespace XMLHelper
             Points.Add(point);
             if (Points.Count > 1)
             {
-                Lenght += GetLenght(Points[Points.Count - 1], point);
+                Lenght += GetLenght(Points[Points.Count - 2], point);
             }
         }
         /// <summary>
@@ -32,14 +34,35 @@ namespace XMLHelper
             int y = p1.Y - p2.Y;
             return (int)Math.Sqrt((double)(x * x) + (double)(y * y));
         }
+        private AgvRate agvRate;
+        /// <summary>
+        /// 如果传了rate则根据rate返回 否则自增，满了100返回100
+        /// </summary>
+        /// <param name="rate"></param>
+        /// <returns></returns>
+        public AgvPoint GetAgvLinePoint(string name,float rate=-1)
+        {
+            agvRate = AgvRates.Find(c => { return c.Name.Equals(name); });
+            if (agvRate == null)
+            {
+                if (rate == -1) rate = 0;
+                agvRate = new AgvRate { Name = name, Rate = rate };
+                AgvRates.Add(agvRate);
+            }
+            if ((agvRate.Rate += MoveSize) > 100)
+            {
+                agvRate.Rate = 100;
+            }
+            return GetPositionPOnRate(agvRate.Rate);
+        }
 
-        private bool FirstP = false;
+
         private int Index = 0;
         /// <summary>
         /// 根据百分比获取当前所在地方地标
         /// </summary>
         /// <param name="rate"></param>
-        public AgvPoint GetPositionPOnRate(float rate)
+        private AgvPoint GetPositionPOnRate(float rate)
         {
             int rateleng = (int)(rate / (float)100 * (float)Lenght);
             foreach (AgvPoint p in Points)
@@ -62,8 +85,10 @@ namespace XMLHelper
                     {
                         rateleng = rateleng + len;//源剩下长度
                         double rateP = Convert.ToDouble(rateleng) / Convert.ToDouble(len);
+                        AgvPoint agvp = GetMP(rateP, Points[Index - 1], p);
                         Index = 0;
-                        return GetMP(rateP, Points[Index - 1], p);
+                        return agvp;
+                        
                     }
                 }
             }
@@ -83,6 +108,12 @@ namespace XMLHelper
             int y = ((int)((double)rate * (p2.Y - p1.Y)) + p1.Y);
             return new AgvPoint { X=x,Y=y};
         }
+    }
+
+    public class AgvRate
+    {
+        public float Rate;
+        public string Name;
     }
 
 

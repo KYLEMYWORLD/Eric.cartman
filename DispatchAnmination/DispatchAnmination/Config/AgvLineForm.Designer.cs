@@ -51,7 +51,12 @@
             this.DeletePointBtn = new System.Windows.Forms.Button();
             this.DeleteLineBtn = new System.Windows.Forms.Button();
             this.LineSpecialCB = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.EditPointBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.LineMoveSizeTB = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.LineUpBtn = new System.Windows.Forms.Button();
+            this.LineDownBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AgvLineListView
@@ -78,6 +83,7 @@
             this.LinePointListView.TabIndex = 2;
             this.LinePointListView.UseCompatibleStateImageBehavior = false;
             this.LinePointListView.View = System.Windows.Forms.View.Details;
+            this.LinePointListView.SelectedIndexChanged += new System.EventHandler(this.LinePointListView_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -138,10 +144,14 @@
             this.LineDesSiteCB.Items.AddRange(new object[] {
             "1号站点(11地标)",
             "4号站点(14地标)",
-            "32等待点",
+            "12完成点",
+            "15完成点",
+            "31等待点",
             "33等待点",
-            "51充电点",
-            "52充电点"});
+            "52充电点",
+            "53充电点",
+            "55充电点",
+            "56充电点"});
             this.LineDesSiteCB.Location = new System.Drawing.Point(345, 192);
             this.LineDesSiteCB.Name = "LineDesSiteCB";
             this.LineDesSiteCB.Size = new System.Drawing.Size(122, 20);
@@ -155,6 +165,7 @@
             this.PointUpBtn.TabIndex = 12;
             this.PointUpBtn.Text = "Up";
             this.PointUpBtn.UseVisualStyleBackColor = true;
+            this.PointUpBtn.Click += new System.EventHandler(this.PointUpBtn_Click);
             // 
             // PontDownBtn
             // 
@@ -164,6 +175,7 @@
             this.PontDownBtn.TabIndex = 13;
             this.PontDownBtn.Text = "Down";
             this.PontDownBtn.UseVisualStyleBackColor = true;
+            this.PontDownBtn.Click += new System.EventHandler(this.PontDownBtn_Click);
             // 
             // PointXTB
             // 
@@ -171,6 +183,7 @@
             this.PointXTB.Name = "PointXTB";
             this.PointXTB.Size = new System.Drawing.Size(115, 21);
             this.PointXTB.TabIndex = 15;
+            this.PointXTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PointXTB_KeyPress);
             // 
             // PointYTB
             // 
@@ -178,6 +191,7 @@
             this.PointYTB.Name = "PointYTB";
             this.PointYTB.Size = new System.Drawing.Size(115, 21);
             this.PointYTB.TabIndex = 16;
+            this.PointYTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PointYTB_KeyPress);
             // 
             // AddPointBtn
             // 
@@ -187,6 +201,7 @@
             this.AddPointBtn.TabIndex = 17;
             this.AddPointBtn.Text = "添加点";
             this.AddPointBtn.UseVisualStyleBackColor = true;
+            this.AddPointBtn.Click += new System.EventHandler(this.AddPointBtn_Click);
             // 
             // label6
             // 
@@ -208,7 +223,7 @@
             // 
             // EditeLineBtn
             // 
-            this.EditeLineBtn.Location = new System.Drawing.Point(392, 234);
+            this.EditeLineBtn.Location = new System.Drawing.Point(392, 277);
             this.EditeLineBtn.Name = "EditeLineBtn";
             this.EditeLineBtn.Size = new System.Drawing.Size(75, 23);
             this.EditeLineBtn.TabIndex = 20;
@@ -218,7 +233,7 @@
             // 
             // AddLineBtn
             // 
-            this.AddLineBtn.Location = new System.Drawing.Point(276, 234);
+            this.AddLineBtn.Location = new System.Drawing.Point(275, 277);
             this.AddLineBtn.Name = "AddLineBtn";
             this.AddLineBtn.Size = new System.Drawing.Size(75, 23);
             this.AddLineBtn.TabIndex = 21;
@@ -254,6 +269,7 @@
             this.DeletePointBtn.TabIndex = 24;
             this.DeletePointBtn.Text = "删除点";
             this.DeletePointBtn.UseVisualStyleBackColor = true;
+            this.DeletePointBtn.Click += new System.EventHandler(this.DeletePointBtn_Click);
             // 
             // DeleteLineBtn
             // 
@@ -263,6 +279,7 @@
             this.DeleteLineBtn.TabIndex = 25;
             this.DeleteLineBtn.Text = "删除路线";
             this.DeleteLineBtn.UseVisualStyleBackColor = true;
+            this.DeleteLineBtn.Click += new System.EventHandler(this.DeleteLineBtn_Click);
             // 
             // LineSpecialCB
             // 
@@ -273,21 +290,73 @@
             this.LineSpecialCB.TabIndex = 26;
             this.LineSpecialCB.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // EditPointBtn
             // 
-            this.button1.Location = new System.Drawing.Point(802, 389);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "修改点";
-            this.button1.UseVisualStyleBackColor = true;
+            this.EditPointBtn.Location = new System.Drawing.Point(802, 389);
+            this.EditPointBtn.Name = "EditPointBtn";
+            this.EditPointBtn.Size = new System.Drawing.Size(75, 23);
+            this.EditPointBtn.TabIndex = 27;
+            this.EditPointBtn.Text = "修改点";
+            this.EditPointBtn.UseVisualStyleBackColor = true;
+            this.EditPointBtn.Click += new System.EventHandler(this.EditPointBtn_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(275, 239);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 12);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "移动尺量:";
+            // 
+            // LineMoveSizeTB
+            // 
+            this.LineMoveSizeTB.Location = new System.Drawing.Point(348, 236);
+            this.LineMoveSizeTB.Name = "LineMoveSizeTB";
+            this.LineMoveSizeTB.Size = new System.Drawing.Size(119, 21);
+            this.LineMoveSizeTB.TabIndex = 29;
+            this.LineMoveSizeTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LineMoveSizeTB_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(473, 239);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "(默认0.1）";
+            // 
+            // LineUpBtn
+            // 
+            this.LineUpBtn.Location = new System.Drawing.Point(258, 411);
+            this.LineUpBtn.Name = "LineUpBtn";
+            this.LineUpBtn.Size = new System.Drawing.Size(45, 34);
+            this.LineUpBtn.TabIndex = 31;
+            this.LineUpBtn.Text = "Up";
+            this.LineUpBtn.UseVisualStyleBackColor = true;
+            this.LineUpBtn.Click += new System.EventHandler(this.LineUpBtn_Click);
+            // 
+            // LineDownBtn
+            // 
+            this.LineDownBtn.Location = new System.Drawing.Point(258, 467);
+            this.LineDownBtn.Name = "LineDownBtn";
+            this.LineDownBtn.Size = new System.Drawing.Size(45, 35);
+            this.LineDownBtn.TabIndex = 32;
+            this.LineDownBtn.Text = "Down";
+            this.LineDownBtn.UseVisualStyleBackColor = true;
+            this.LineDownBtn.Click += new System.EventHandler(this.LineDownBtn_Click);
             // 
             // LineInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 685);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.LineDownBtn);
+            this.Controls.Add(this.LineUpBtn);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.LineMoveSizeTB);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.EditPointBtn);
             this.Controls.Add(this.LineSpecialCB);
             this.Controls.Add(this.DeleteLineBtn);
             this.Controls.Add(this.DeletePointBtn);
@@ -343,6 +412,11 @@
         private System.Windows.Forms.Button DeletePointBtn;
         private System.Windows.Forms.Button DeleteLineBtn;
         private System.Windows.Forms.CheckBox LineSpecialCB;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button EditPointBtn;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox LineMoveSizeTB;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button LineUpBtn;
+        private System.Windows.Forms.Button LineDownBtn;
     }
 }

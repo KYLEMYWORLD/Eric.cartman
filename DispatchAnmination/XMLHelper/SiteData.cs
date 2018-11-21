@@ -39,7 +39,17 @@ namespace XMLHelper
         /// <summary>
         /// 非交通管制点
         /// </summary>
-        NotTrafficSite = 6
+        NotTrafficSite = 6,
+
+        /// <summary>
+        /// 完成点
+        /// </summary>
+        FinishSite = 7,
+
+        /// <summary>
+        /// 加减速度
+        /// </summary>
+        InCresSite = 8
     }
 
     /// <summary>

@@ -39,6 +39,7 @@
             this.DisplaySetBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.MapConfigBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ReReadConfBtn = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.anminationPicBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -67,13 +68,14 @@
             // anminateTimer
             // 
             this.anminateTimer.Enabled = true;
-            this.anminateTimer.Interval = 50;
+            this.anminateTimer.Interval = 500;
             this.anminateTimer.Tick += new System.EventHandler(this.AnminateTimer_Tick);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1});
+            this.toolStripDropDownButton1,
+            this.ReReadConfBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(984, 25);
@@ -123,6 +125,15 @@
             this.panel1.Size = new System.Drawing.Size(984, 761);
             this.panel1.TabIndex = 2;
             // 
+            // ReReadConfBtn
+            // 
+            this.ReReadConfBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReReadConfBtn.Image")));
+            this.ReReadConfBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ReReadConfBtn.Name = "ReReadConfBtn";
+            this.ReReadConfBtn.Size = new System.Drawing.Size(76, 22);
+            this.ReReadConfBtn.Text = "重读配置";
+            this.ReReadConfBtn.Click += new System.EventHandler(this.ReReadConfBtn_Click);
+            // 
             // AnminationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -154,6 +165,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem DisplaySetBtn;
         private System.Windows.Forms.ToolStripMenuItem MapConfigBtn;
+        private System.Windows.Forms.ToolStripButton ReReadConfBtn;
     }
 }
 

@@ -41,6 +41,8 @@
             this.IsShowNotTrafficSiteCB = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.IsShowSiteFinishCB = new System.Windows.Forms.CheckBox();
+            this.IsShowIncreCB = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // IsShowSiteNameCB
@@ -178,7 +180,7 @@
             this.IsShowNotTrafficSiteCB.AutoSize = true;
             this.IsShowNotTrafficSiteCB.Checked = true;
             this.IsShowNotTrafficSiteCB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.IsShowNotTrafficSiteCB.Location = new System.Drawing.Point(259, 328);
+            this.IsShowNotTrafficSiteCB.Location = new System.Drawing.Point(259, 324);
             this.IsShowNotTrafficSiteCB.Name = "IsShowNotTrafficSiteCB";
             this.IsShowNotTrafficSiteCB.Size = new System.Drawing.Size(120, 16);
             this.IsShowNotTrafficSiteCB.TabIndex = 10;
@@ -208,11 +210,39 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "地标显示设置";
             // 
+            // IsShowSiteFinishCB
+            // 
+            this.IsShowSiteFinishCB.AutoSize = true;
+            this.IsShowSiteFinishCB.Checked = true;
+            this.IsShowSiteFinishCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.IsShowSiteFinishCB.Location = new System.Drawing.Point(259, 364);
+            this.IsShowSiteFinishCB.Name = "IsShowSiteFinishCB";
+            this.IsShowSiteFinishCB.Size = new System.Drawing.Size(60, 16);
+            this.IsShowSiteFinishCB.TabIndex = 13;
+            this.IsShowSiteFinishCB.Text = "完成点";
+            this.IsShowSiteFinishCB.UseVisualStyleBackColor = true;
+            this.IsShowSiteFinishCB.CheckedChanged += new System.EventHandler(this.IsShowSiteFinishCB_CheckedChanged);
+            // 
+            // IsShowIncreCB
+            // 
+            this.IsShowIncreCB.AutoSize = true;
+            this.IsShowIncreCB.Checked = true;
+            this.IsShowIncreCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.IsShowIncreCB.Location = new System.Drawing.Point(259, 405);
+            this.IsShowIncreCB.Name = "IsShowIncreCB";
+            this.IsShowIncreCB.Size = new System.Drawing.Size(72, 16);
+            this.IsShowIncreCB.TabIndex = 14;
+            this.IsShowIncreCB.Text = "加减速点";
+            this.IsShowIncreCB.UseVisualStyleBackColor = true;
+            this.IsShowIncreCB.CheckedChanged += new System.EventHandler(this.IsShowIncreCB_CheckedChanged);
+            // 
             // DisplaySetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 450);
+            this.Controls.Add(this.IsShowIncreCB);
+            this.Controls.Add(this.IsShowSiteFinishCB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.IsShowNotTrafficSiteCB);
@@ -249,5 +279,7 @@
         private System.Windows.Forms.CheckBox IsShowNotTrafficSiteCB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox IsShowSiteFinishCB;
+        private System.Windows.Forms.CheckBox IsShowIncreCB;
     }
 }

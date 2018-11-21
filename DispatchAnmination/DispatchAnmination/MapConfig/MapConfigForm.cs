@@ -81,13 +81,24 @@ namespace DispatchAnmination.MapConfig
                 IsNewLine = false;
             }
         }
+        Pen redPen = new Pen(new SolidBrush(Color.Red));
+        Pen blackPen = new Pen(new SolidBrush(Color.Black));
+
 
         private void MapConfigPB_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             foreach(var line in _lineModule)
             {
+                if (LineSelectedIndex>=0 && line == _lineModule[LineSelectedIndex])
+                {
+                    line.SetRedPen(redPen);
+                }else
+                {
+                    line.SetRedPen(blackPen);
+                }
                 line.Draw(g);
+                
             }
         }
 
@@ -253,7 +264,7 @@ namespace DispatchAnmination.MapConfig
                 lineDatas.Add(line.ToLineData());
             }
             xmlAnalyze.SaveLineToFile(lineDatas);
-            xmlAnalyze.SaveMapConfigFile();
+            //xmlAnalyze.SaveMapConfigFile();
         }
 
         private void EditLineSiteBtn_Click(object sender, EventArgs e)
@@ -293,6 +304,15 @@ namespace DispatchAnmination.MapConfig
             SiteUpNameTB.Text = "";
             SiteDirecationCB.SelectedIndex =0;
             SiteTypeCB.SelectedIndex =0;
+        }
+
+        private void LineNumberInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
 
         /// <summary>

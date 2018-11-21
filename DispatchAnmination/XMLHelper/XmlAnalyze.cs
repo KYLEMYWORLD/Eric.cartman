@@ -48,9 +48,16 @@ namespace XMLHelper
                 _xmlHepler.SaveXMLFile(fileName);
                 _xmlHepler.CreateOrLoadXMLFile(fileName);
             }
+            if (_xmlHepler.GetXmlNodeList("AgvLine").Count == 0)
+            {
+                CreateAgvLineNote();
+                _xmlHepler.SaveXMLFile(fileName);
+                _xmlHepler.CreateOrLoadXMLFile(fileName);
+            }
 
             AnalyzeLineMoveSize(_xmlHepler.GetXmlNodeList("Size"));
             AnalyzeLines(_xmlHepler.GetXmlNodeList("Line"));
+            AnalyzeAgvLine(_xmlHepler.GetXmlNodeList("AgvLine"));
         }
 
         /// <summary>
@@ -83,17 +90,19 @@ namespace XMLHelper
         public void AnalyzeAgvLine(XmlNodeList agvLineList)
         {
             if (agvLineList.Count == 0) return;
-
+            AgvLineList.Clear();
             foreach (XmlElement a in agvLineList)
             {
                 int nowsite = int.Parse(a.GetAttribute("nowsite"));
                 int isspecial = int.Parse(a.GetAttribute("isspecial"));
                 int dessite = int.Parse(a.GetAttribute("dessite"));
+                float movesize = float.Parse(a.GetAttribute("movesize"));
                 AgvLineData agvLineData = new AgvLineData
                 {
                     NowSite = nowsite,
                     IsSpecial = isspecial == 1 ? true : false,
-                    DesSite = dessite
+                    DesSite = dessite,
+                    MoveSize = movesize
                 };
 
                 XmlNodeList points = a.GetElementsByTagName("Point");
@@ -103,7 +112,7 @@ namespace XMLHelper
                     {
                         int x = int.Parse(p.GetAttribute("x"));
                         int y = int.Parse(p.GetAttribute("y"));
-                        agvLineData.Points.Add(new AgvPoint { X = x, Y = y });
+                        agvLineData.AddPoint(new AgvPoint { X = x, Y = y });
                     }
                 }
                 AgvLineList.Add(agvLineData);
@@ -160,6 +169,15 @@ namespace XMLHelper
         /// </summary>
         public void SaveLineToFile(List<LineData> lineDatas)
         {
+            XmlElement linex = _xmlHepler.GetSingleElement("Config/Lines");
+            if (linex != null)
+            {
+                linex.RemoveAll();
+                _xmlHepler.SaveXMLFile("mapconf.xml");
+                DoAnalyze("mapconf.xml");
+                linex = _xmlHepler.GetSingleElement("Config/Lines");
+            }
+
             foreach (var line in lineDatas)
             {
                 XmlElement lineX = _xmlHepler.CreateElement("Line");
@@ -210,6 +228,7 @@ namespace XMLHelper
                 agvline.SetAttribute("nowsite", line.NowSite + "");
                 agvline.SetAttribute("isspecial", line.IsSpecial ? "1" : "0");
                 agvline.SetAttribute("dessite", line.DesSite + "");
+                agvline.SetAttribute("movesize", line.MoveSize + "");
                 foreach(AgvPoint p in line.Points)
                 {
                     XmlElement point = _xmlHepler.CreateElement("Point");

@@ -105,6 +105,11 @@ namespace DispatchAnmination
                 site._siteP = GetSiteP(site._rate);
             }
         }
+        
+        public void SetRedPen(Pen pen)
+        {
+            _pen = pen;
+        }
 
         /// <summary>
         /// 将模型画用GUI画出来
@@ -113,6 +118,8 @@ namespace DispatchAnmination
         public override void Draw(Graphics g)
         {
             g.DrawLine(_pen, _centerP, _endP);
+            //g.DrawString(_centerP.X + "," + _centerP.Y + ")", _font, _brush, _centerP.X - 10, _centerP.Y - 60);
+            //g.DrawString(_endP.X + "," + _endP.Y + ")", _font, _brush, _endP.X - 10, _endP.Y - 60);
 
             if (_sitePos.Count() > 0 && ConstBA.IsShow_Site)
             {
@@ -125,6 +132,8 @@ namespace DispatchAnmination
                     else if (site._type == SiteType.ChargeSite && !ConstBA.IsShow_ChargeSite) continue;
                     else if (site._type == SiteType.TrafficSite && !ConstBA.IsShow_TrafficSite) continue;
                     else if (site._type == SiteType.NotTrafficSite && !ConstBA.IsShow_NotTrafficSite) continue;
+                    else if (site._type == SiteType.FinishSite && !ConstBA.IsShow_FinishSite) continue;
+                    else if (site._type == SiteType.InCresSite && !ConstBA.IsShow_IncreSite) continue;
 
                     g.FillEllipse(_brush,site._siteP.X - _siteCircleSize/2,site._siteP.Y - _siteCircleSize / 2, _siteCircleSize, _siteCircleSize);
                     if(ConstBA.IsShow_SitePoint) g.DrawString("(" + site._siteP.X + "," + site._siteP.Y + ")", _font, _brush, site._siteP.X - 10, site._siteP.Y - 40);
