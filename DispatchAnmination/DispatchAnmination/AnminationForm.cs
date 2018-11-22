@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Xml;
 using XMLHelper;
 
+
 namespace DispatchAnmination
 {
     public partial class AnminationForm : Form
@@ -21,6 +22,9 @@ namespace DispatchAnmination
         public AnminationForm()
         {
             InitializeComponent();
+
+            
+
         }
         private void AnminationForm_Load(object sender, EventArgs e)
         {
@@ -32,18 +36,23 @@ namespace DispatchAnmination
             ModuleControl.AddLinesToModule(xml._lineDatas);
             AgvLineMaster.AddLine(xml.AgvLineList);
 
-            LineDateCenter.AddLineData(); 
+            LineDateCenter.AddLineData();
 
-            ModuleControl.AddAgvToModuleNew("AGV011", 62, 31);
-            ModuleControl.AddAgvToModuleNew("AGV012", 62, 31,22);
-            ModuleControl.AddAgvToModuleNew("AGV013", 62, 31,50);
-            ModuleControl.AddAgvToModuleNew("AGV014", 62, 31,70);
-            ModuleControl.AddAgvToModuleNew("AGV02", 65, 1);
-            ModuleControl.AddAgvToModuleNew("AGV03", 65, 1,30);
-            ModuleControl.AddAgvToModuleNew("AGV04", 65, 1,40);
-            ModuleControl.AddAgvToModuleNew("AGV05", 65, 1,55);
+
+
+
+            ModuleControl.AddAgvToModuleNew("AGV011", 12, 1);
+            ModuleControl.AddAgvToModuleNew("AGV012", 12, 5, 22);
+            ModuleControl.AddAgvToModuleNew("AGV013", 12, 2, 50);
+            ModuleControl.AddAgvToModuleNew("AGV014", 12, 3, 70);
+            ModuleControl.AddAgvToModuleNew("AGV02", 15, 1);
+            ModuleControl.AddAgvToModuleNew("AGV03", 15, 8, 30);
+            ModuleControl.AddAgvToModuleNew("AGV04", 15, 6, 40);
+            ModuleControl.AddAgvToModuleNew("AGV05", 15, 71, 55);
+
 
         }
+
 
         private Point point = new Point(500, 500);
 
@@ -59,14 +68,14 @@ namespace DispatchAnmination
         }
         private void Test()
         {
-            ModuleControl.UpdateAgvSiteNew("AGV011", 62,31);
-            ModuleControl.UpdateAgvSiteNew("AGV012", 62,31);
-            ModuleControl.UpdateAgvSiteNew("AGV013", 62,31);
-            ModuleControl.UpdateAgvSiteNew("AGV014", 62,31);
-            ModuleControl.UpdateAgvSiteNew("AGV02", 65);
-            ModuleControl.UpdateAgvSiteNew("AGV03", 65);
-            ModuleControl.UpdateAgvSiteNew("AGV04", 65);
-            ModuleControl.UpdateAgvSiteNew("AGV05", 65);
+            ModuleControl.UpdateAgvSiteNew("AGV011", 12,5);
+            ModuleControl.UpdateAgvSiteNew("AGV012", 12,1);
+            ModuleControl.UpdateAgvSiteNew("AGV013", 12,12);
+            ModuleControl.UpdateAgvSiteNew("AGV014", 12,78);
+            ModuleControl.UpdateAgvSiteNew("AGV02", 15);
+            //ModuleControl.UpdateAgvSiteNew("AGV03", 15);
+            ModuleControl.UpdateAgvSiteNew("AGV04", 15);
+            ModuleControl.UpdateAgvSiteNew("AGV05", 15);
         }
 
         private void AnminateTimer_Tick(object sender, EventArgs e)
@@ -89,7 +98,7 @@ namespace DispatchAnmination
 
         private void DisplaySetBtn_Click(object sender, EventArgs e)
         {
-            DisplaySetForm.newInstance().Show();
+            DisplaySetForm.NewInstance().Show();
         }
 
         private void MapConfigBtn_Click(object sender, EventArgs e)

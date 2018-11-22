@@ -38,8 +38,8 @@
             this.LinePosNegBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.DisplaySetBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.MapConfigBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.ReReadConfBtn = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.anminationPicBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -115,6 +115,15 @@
             this.MapConfigBtn.Text = "地图配置";
             this.MapConfigBtn.Click += new System.EventHandler(this.MapConfigBtn_Click);
             // 
+            // ReReadConfBtn
+            // 
+            this.ReReadConfBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReReadConfBtn.Image")));
+            this.ReReadConfBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ReReadConfBtn.Name = "ReReadConfBtn";
+            this.ReReadConfBtn.Size = new System.Drawing.Size(76, 22);
+            this.ReReadConfBtn.Text = "重读配置";
+            this.ReReadConfBtn.Click += new System.EventHandler(this.ReReadConfBtn_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.anminationPicBox);
@@ -124,15 +133,6 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.panel1.Size = new System.Drawing.Size(984, 761);
             this.panel1.TabIndex = 2;
-            // 
-            // ReReadConfBtn
-            // 
-            this.ReReadConfBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReReadConfBtn.Image")));
-            this.ReReadConfBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ReReadConfBtn.Name = "ReReadConfBtn";
-            this.ReReadConfBtn.Size = new System.Drawing.Size(76, 22);
-            this.ReReadConfBtn.Text = "重读配置";
-            this.ReReadConfBtn.Click += new System.EventHandler(this.ReReadConfBtn_Click);
             // 
             // AnminationForm
             // 

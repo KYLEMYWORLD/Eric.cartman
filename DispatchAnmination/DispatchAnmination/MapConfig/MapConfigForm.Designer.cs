@@ -63,6 +63,8 @@
             this.AddNewSiteBtn = new System.Windows.Forms.Button();
             this.AddNewLineBtn = new System.Windows.Forms.Button();
             this.MapTimer = new System.Windows.Forms.Timer(this.components);
+            this.LineUpBtn = new System.Windows.Forms.Button();
+            this.LineDownBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MapConfigPB)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +84,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.LineDownBtn);
+            this.panel1.Controls.Add(this.LineUpBtn);
             this.panel1.Controls.Add(this.SaveToMapFileBtn);
             this.panel1.Controls.Add(this.LineSelectedLab);
             this.panel1.Controls.Add(this.label11);
@@ -132,7 +136,7 @@
             // LineSelectedLab
             // 
             this.LineSelectedLab.AutoSize = true;
-            this.LineSelectedLab.Location = new System.Drawing.Point(412, 7);
+            this.LineSelectedLab.Location = new System.Drawing.Point(502, 12);
             this.LineSelectedLab.Name = "LineSelectedLab";
             this.LineSelectedLab.Size = new System.Drawing.Size(11, 12);
             this.LineSelectedLab.TabIndex = 32;
@@ -141,7 +145,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(316, 7);
+            this.label11.Location = new System.Drawing.Point(395, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(101, 12);
             this.label11.TabIndex = 31;
@@ -418,6 +422,26 @@
             this.MapTimer.Interval = 500;
             this.MapTimer.Tick += new System.EventHandler(this.MapTimer_Tick);
             // 
+            // LineUpBtn
+            // 
+            this.LineUpBtn.Location = new System.Drawing.Point(303, 7);
+            this.LineUpBtn.Name = "LineUpBtn";
+            this.LineUpBtn.Size = new System.Drawing.Size(42, 22);
+            this.LineUpBtn.TabIndex = 34;
+            this.LineUpBtn.Text = "Up";
+            this.LineUpBtn.UseVisualStyleBackColor = true;
+            this.LineUpBtn.Click += new System.EventHandler(this.LineUpBtn_Click);
+            // 
+            // LineDownBtn
+            // 
+            this.LineDownBtn.Location = new System.Drawing.Point(351, 6);
+            this.LineDownBtn.Name = "LineDownBtn";
+            this.LineDownBtn.Size = new System.Drawing.Size(38, 24);
+            this.LineDownBtn.TabIndex = 35;
+            this.LineDownBtn.Text = "Down";
+            this.LineDownBtn.UseVisualStyleBackColor = true;
+            this.LineDownBtn.Click += new System.EventHandler(this.LineDownBtn_Click);
+            // 
             // MapConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -470,5 +494,7 @@
         private System.Windows.Forms.Label LineSelectedLab;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button SaveToMapFileBtn;
+        private System.Windows.Forms.Button LineDownBtn;
+        private System.Windows.Forms.Button LineUpBtn;
     }
 }

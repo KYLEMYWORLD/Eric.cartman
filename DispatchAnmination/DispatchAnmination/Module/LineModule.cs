@@ -118,8 +118,8 @@ namespace DispatchAnmination
         public override void Draw(Graphics g)
         {
             g.DrawLine(_pen, _centerP, _endP);
-            //g.DrawString(_centerP.X + "," + _centerP.Y + ")", _font, _brush, _centerP.X - 10, _centerP.Y - 60);
-            //g.DrawString(_endP.X + "," + _endP.Y + ")", _font, _brush, _endP.X - 10, _endP.Y - 60);
+            g.DrawString(_centerP.X + "," + _centerP.Y, _font, _brush, _centerP.X - 10, _centerP.Y - 60);
+            g.DrawString(_endP.X + "," + _endP.Y, _font, _brush, _endP.X - 10, _endP.Y - 60);
 
             if (_sitePos.Count() > 0 && ConstBA.IsShow_Site)
             {

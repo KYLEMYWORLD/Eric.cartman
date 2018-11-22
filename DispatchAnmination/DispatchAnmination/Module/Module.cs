@@ -147,8 +147,9 @@ namespace DispatchAnmination
         internal Pen _pen = new Pen(new SolidBrush(Color.Black));
 
         internal Brush _brush = new SolidBrush(Color.Black);
-        internal Brush _orageBrush = new SolidBrush(Color.OrangeRed);
+        internal Brush _orageBrush = new SolidBrush(Color.Orange);
         internal Brush _brushRed = new SolidBrush(Color.OrangeRed);
+        internal Brush _brushGreen = new SolidBrush(Color.Green);
 
         internal Font _font = new Font("宋体", 10);
         internal Font _fontMin = new Font("宋体", 8);

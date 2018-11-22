@@ -315,6 +315,34 @@ namespace DispatchAnmination.MapConfig
             }
         }
 
+        private void LineUpBtn_Click(object sender, EventArgs e)
+        {
+            if (LineSelectedIndex == -1)
+            {
+                MessageBox.Show("请选择线路！");
+                return;
+            }
+            if (LineSelectedIndex ==0) { return; }
+            LineModule line = _lineModule[LineSelectedIndex-1];
+            _lineModule[LineSelectedIndex-1] = _lineModule[LineSelectedIndex];
+            _lineModule[LineSelectedIndex] = line;
+            LineListViewRefresh();
+        }
+
+        private void LineDownBtn_Click(object sender, EventArgs e)
+        {
+            if (LineSelectedIndex == -1)
+            {
+                MessageBox.Show("请选择线路！");
+                return;
+            }
+            if (LineSelectedIndex == _lineModule.Count-1) { return; }
+            LineModule line = _lineModule[LineSelectedIndex + 1];
+            _lineModule[LineSelectedIndex + 1] = _lineModule[LineSelectedIndex];
+            _lineModule[LineSelectedIndex] = line;
+            LineListViewRefresh();
+        }
+
         /// <summary>
         /// 清空站点输入框
         /// </summary>

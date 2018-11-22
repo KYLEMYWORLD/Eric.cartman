@@ -48,7 +48,7 @@ namespace XMLHelper
                 _xmlHepler.SaveXMLFile(fileName);
                 _xmlHepler.CreateOrLoadXMLFile(fileName);
             }
-            if (_xmlHepler.GetXmlNodeList("AgvLine").Count == 0)
+            if (_xmlHepler.GetXmlNodeList("AgvLines").Count == 0)
             {
                 CreateAgvLineNote();
                 _xmlHepler.SaveXMLFile(fileName);
@@ -57,22 +57,6 @@ namespace XMLHelper
 
             AnalyzeLineMoveSize(_xmlHepler.GetXmlNodeList("Size"));
             AnalyzeLines(_xmlHepler.GetXmlNodeList("Line"));
-            AnalyzeAgvLine(_xmlHepler.GetXmlNodeList("AgvLine"));
-        }
-
-        /// <summary>
-        /// 用于AGV线路配置
-        /// </summary>
-        /// <param name="fileName"></param>
-        public void DoAgvLineAnalyze(string fileName = "conf.xml")
-        {
-            _xmlHepler.CreateOrLoadXMLFile(fileName);
-            if (_xmlHepler.GetXmlNodeList("AgvLine").Count == 0)
-            {
-                CreateAgvLineNote();
-                _xmlHepler.SaveXMLFile(fileName);
-                _xmlHepler.CreateOrLoadXMLFile(fileName);
-            }
             AnalyzeAgvLine(_xmlHepler.GetXmlNodeList("AgvLine"));
         }
         private void CreateAgvLineNote()
@@ -211,7 +195,7 @@ namespace XMLHelper
         public void SaveAgvLineToFile(List<AgvLineData> agvLine)
         {
             XmlElement agvlines = _xmlHepler.GetSingleElement("Config/AgvLines");
-            if (agvlines == null)
+            if (_xmlHepler.GetXmlNodeList("AgvLines").Count == 0)
             {
                 CreateAgvLineNote();
             }
@@ -219,7 +203,7 @@ namespace XMLHelper
             {
                 agvlines.RemoveAll();
                 _xmlHepler.SaveXMLFile("conf.xml");
-                DoAgvLineAnalyze();
+                DoAnalyze();
                 agvlines = _xmlHepler.GetSingleElement("Config/AgvLines");
             }
             foreach(AgvLineData line in agvLine)

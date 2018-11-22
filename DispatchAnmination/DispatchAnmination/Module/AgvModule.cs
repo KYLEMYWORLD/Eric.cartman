@@ -110,7 +110,8 @@ namespace DispatchAnmination
         public override void Draw(Graphics g)
         {
             //g.DrawLines(_pen, _lines);
-            g.DrawRectangle(_pen, _agvtangle);
+            //g.DrawRectangle(_pen, _agvtangle);
+            g.FillRectangle(_brushGreen, _agvtangle);
             //g.DrawEllipse(_pen, _rectangle[0]);
             //g.DrawEllipse(_pen, _rectangle[1]);
             g.FillEllipse(_orageBrush, _rectangle[0]);

@@ -18,7 +18,7 @@ namespace DispatchAnmination.Config
             InitializeComponent();
         }
 
-        public static DisplaySetForm newInstance()
+        public static DisplaySetForm NewInstance()
         {
             if(_DisplaSetForm==null || _DisplaSetForm.IsDisposed)
             {

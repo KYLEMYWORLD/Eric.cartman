@@ -42,7 +42,7 @@ namespace DispatchAnmination
 
         private void LineInfoForm_Load(object sender, EventArgs e)
         {
-            xml.DoAgvLineAnalyze();
+            xml.DoAnalyze();
             AgvLineDatas = xml.AgvLineList;
             AgvLineListViewRefresh();
         }
@@ -141,7 +141,7 @@ namespace DispatchAnmination
         private void SaveAgvLineBtn_Click(object sender, EventArgs e)
         {
             xml.SaveAgvLineToFile(AgvLineDatas);
-            xml.DoAgvLineAnalyze();
+            xml.DoAnalyze();
             AgvLineDatas = xml.AgvLineList;
             AgvLineListViewRefresh();
         }
