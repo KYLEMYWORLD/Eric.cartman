@@ -21,7 +21,7 @@ namespace XMLHelper
         /// </summary>
         public List<LineData> _lineDatas { get; set; }
 
-        
+        public List<DisplayConfig> _disConfig;
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -32,6 +32,8 @@ namespace XMLHelper
             _lineDatas = new List<LineData>();
 
             AgvLineList = new List<AgvLineData>();
+
+            _disConfig = new List<DisplayConfig>();
         }
 
         /// <summary>
@@ -58,6 +60,8 @@ namespace XMLHelper
             AnalyzeLineMoveSize(_xmlHepler.GetXmlNodeList("Size"));
             AnalyzeLines(_xmlHepler.GetXmlNodeList("Line"));
             AnalyzeAgvLine(_xmlHepler.GetXmlNodeList("AgvLine"));
+            AnalyzeAgvDisConfig(_xmlHepler.GetXmlNodeList("DisConf"));
+
         }
         private void CreateAgvLineNote()
         {
@@ -100,6 +104,22 @@ namespace XMLHelper
                     }
                 }
                 AgvLineList.Add(agvLineData);
+            }
+        }
+
+        /// <summary>
+        /// 解析Agv行走线路
+        /// </summary>
+        /// <param name="agvLineList"></param>
+        public void AnalyzeAgvDisConfig(XmlNodeList xmlNode)
+        {
+            if (xmlNode.Count == 0) return;
+            _disConfig.Clear();
+            foreach (XmlElement a in xmlNode)
+            {
+                string namex =a.GetAttribute("name");
+                string valuex = a.GetAttribute("value");
+                _disConfig.Add(new DisplayConfig { name = namex, value = valuex });
             }
         }
 
@@ -224,5 +244,43 @@ namespace XMLHelper
             }
             _xmlHepler.SaveXMLFile("conf.xml");
         }
+        private void CreateDispayConfig()
+        {
+            XmlElement disconf = _xmlHepler.CreateElement("DisConfs");
+            _xmlHepler.AddToNode("Config", disconf);
+        }
+
+        /// <summary>
+        /// 保存显示配置
+        /// </summary>
+        /// <param name="configs"></param>
+        public void SaveDispalyConfig(List<DisplayConfig> configs)
+        {
+            if (_xmlHepler.GetXmlNodeList("DisConfs").Count == 0)
+            {
+                CreateDispayConfig();
+            }
+            else
+            {
+                XmlElement agvlines = _xmlHepler.GetSingleElement("Config/DisConfs");
+                agvlines.RemoveAll();
+                _xmlHepler.SaveXMLFile("conf.xml");
+                DoAnalyze();
+            }
+            foreach (DisplayConfig line in configs)
+            {
+                XmlElement agvline = _xmlHepler.CreateElement("DisConf");
+                agvline.SetAttribute("name", line.name);
+                agvline.SetAttribute("value", line.value);
+                _xmlHepler.AddToNode("Config/DisConfs", agvline);
+            }
+            _xmlHepler.SaveXMLFile("conf.xml");
+        }
+    }
+
+    public class DisplayConfig
+    {
+        public string name;
+        public string value;
     }
 }
